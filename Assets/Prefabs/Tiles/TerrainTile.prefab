@@ -103,9 +103,9 @@ MonoBehaviour:
   - {fileID: 7072577845906227395, guid: 078746a51434b5f45998abc86bba7d98, type: 3}
   chanceOfObstacle: 35
   minimumFreeSlots: 2
-  confinementSlots: 2
-  spawnPointSpacing: 1.1
-  originOffset: {x: -9, y: 0.5, z: 0}
+  confinementSlots: 5
+  spawnPointSpacing: 1.5
+  originOffset: {x: -14, y: 0.5, z: 0}
 --- !u!65 &6400912897953717295
 BoxCollider:
   m_ObjectHideFlags: 0

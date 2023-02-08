@@ -29,7 +29,7 @@ public class RunnerCamera : MonoBehaviour
         }
         else
         {
-            // Add method when for death
+            // Add method for death
         }
     }
 }
