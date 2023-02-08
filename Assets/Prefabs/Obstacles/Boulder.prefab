@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2072061130028337830}
   - component: {fileID: 3129626858530063619}
   - component: {fileID: 903636114653589961}
-  - component: {fileID: -3784683575792292635}
+  - component: {fileID: 2865276024942679039}
   m_Layer: 0
   m_Name: Boulder
   m_TagString: Untagged
@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 1696344346309922844}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 1.813, y: 0.57902646, z: -0.006976209}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 0.75, y: 1, z: 0.75}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -82,8 +82,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &-3784683575792292635
-MeshCollider:
+--- !u!65 &2865276024942679039
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -92,7 +92,6 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 5137950316506972610, guid: f26a64b692d64e846bfd9938457f1eac, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 1.5, y: 3, z: 1.5}
+  m_Center: {x: 0, y: 1.5, z: 0}
