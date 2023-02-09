@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2194557958309287043}
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 15.76, y: 0.5, z: 0}
+  m_LocalPosition: {x: 15.75, y: 0.3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 0.6666667}
   m_Children: []
   m_Father: {fileID: 4033645529507412193}
@@ -54,7 +54,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3984270787057297025}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -15.85, y: 0.5, z: 0}
+  m_LocalPosition: {x: -15.75, y: 0.3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 0.6666667}
   m_Children: []
   m_Father: {fileID: 4033645529507412193}
@@ -175,18 +175,19 @@ MonoBehaviour:
   spawnPoints:
   - {fileID: 4279676056607575904}
   - {fileID: 7564632266732856629}
-  dangers: []
+  dangers:
+  - {fileID: 8839520347605619306, guid: a29d6ee8648d6144c8268f4f28923f7c, type: 3}
   series:
-    min: 0
-    max: 0
+    min: 3
+    max: 4
   speed:
-    min: 0
-    max: 0
+    min: 2.5
+    max: 4.5
   spawnRate:
-    min: 0
-    max: 0
-  spacing: 0
-  duration: 30
+    min: 2
+    max: 4
+  spacing: 2
+  duration: 20
 --- !u!65 &2429886226506389740
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -198,5 +199,5 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 13.495594, y: 4.8804655, z: 1.005}
-  m_Center: {x: 0.07025719, y: 3.0762348, z: 0}
+  m_Size: {x: 13.495594, y: 5.4075365, z: 1.005}
+  m_Center: {x: 0.07025719, y: 2.8126993, z: 0}
