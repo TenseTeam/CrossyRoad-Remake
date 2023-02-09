@@ -268,15 +268,15 @@ MonoBehaviour:
   dangers:
   - {fileID: 2073856088862640521, guid: 1cf26a08e848bf1408a0413800ee683d, type: 3}
   series:
-    min: 2
-    max: 5
-  speed:
     min: 1
-    max: 4
+    max: 3
+  speed:
+    min: 2.5
+    max: 5
   spawnRate:
     min: 1
     max: 3
-  spacing: 1.5
+  spacing: 2
   duration: 20
 --- !u!114 &6210388132811781470
 MonoBehaviour:
