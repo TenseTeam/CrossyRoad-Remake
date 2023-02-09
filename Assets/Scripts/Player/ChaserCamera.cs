@@ -66,28 +66,22 @@ public class ChaserCamera : MonoBehaviour
             yield return new WaitForFixedUpdate();
         }
 
+        
+        if(target.TryGetComponent(out PlayerStatus ps)) 
+        {
+            ps.Death();
+        }
 
-        Death();
         yield return null;
     }
 
 
-    private void Death()
+    public void CameraDeath() 
     {
-        restartUI.SetActive(true);
-        grabber.SetActive(true);
-        _movementPlayer.enabled = false;
-
-        Debug.Log("ALORA");
-        ScoreManager.instance.SaveTopScore();
-
-        //Setting the X of the Grabber (The Eagle) equals to the player's one so the grabber fly above him.
-        grabber.transform.position = new Vector3(target.position.x, grabber.transform.position.y, grabber.transform.position.z);
-
-        StartCoroutine(LerpGrabber());
+        StartCoroutine(LerpCamera());
     }
 
-    private IEnumerator LerpGrabber()
+    private IEnumerator LerpCamera()
     {
         while (!_grab.hasGrabbed)
         {
