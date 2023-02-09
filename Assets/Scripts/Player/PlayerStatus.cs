@@ -31,6 +31,7 @@ public class PlayerStatus : MonoBehaviour
         eagle.transform.position = new Vector3(transform.position.x, eagle.transform.position.y, eagle.transform.position.z);
     }
 
+
     public void Death()
     {
         restartUI.SetActive(true);

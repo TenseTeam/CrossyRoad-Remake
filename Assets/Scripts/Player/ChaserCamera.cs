@@ -69,7 +69,7 @@ public class ChaserCamera : MonoBehaviour
         
         if(target.TryGetComponent(out PlayerStatus ps)) 
         {
-            ps.Death();
+            ps.DeathByEagle();
         }
 
         yield return null;
