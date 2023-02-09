@@ -10,6 +10,8 @@ public class RandomDangersSpawner : MonoBehaviour
 
     [Header("Dangers")]
     public GameObject[] dangers;
+    [Range(1, 60)]public float forewarningTime = 1f;
+
 
     [Header("Series")]
     public IntRange series;
@@ -37,11 +39,13 @@ public class RandomDangersSpawner : MonoBehaviour
         StartCoroutine(SpawnLoop());
     }
 
-
-
     private IEnumerator SpawnLoop()
     {
-        yield return new WaitForSeconds(_timeForNewSeries);
+        yield return new WaitForSeconds(forewarningTime);
+        
+        SendMessage("StartAlert", SendMessageOptions.DontRequireReceiver);
+
+        yield return new WaitForSeconds(_timeForNewSeries - forewarningTime);
 
         for (int i = 0; i < _dangersToSpawn; i++)
         {
