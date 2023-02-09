@@ -532,39 +532,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1676983158}
-  - component: {fileID: 1676983157}
   m_Layer: 0
-  m_Name: Obstacle Generator
+  m_Name: ObstacleGenerator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1676983157
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1676983156}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 549e3f7c88813784bb3313cdbd11d22e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spawnPoints: []
-  dangers: []
-  series:
-    min: 2
-    max: 5
-  speed:
-    min: 1
-    max: 4
-  spawnRate:
-    min: 1
-    max: 3
-  spacing: 1.5
-  duration: 30
 --- !u!4 &1676983158
 Transform:
   m_ObjectHideFlags: 0
