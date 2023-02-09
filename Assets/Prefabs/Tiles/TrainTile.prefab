@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2565342049853964615}
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 9.34, y: 1.08, z: 0}
+  m_LocalPosition: {x: 17, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4333933683516779561}
@@ -54,7 +54,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3277317272235460024}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -10.27, y: 1.08, z: 0}
+  m_LocalPosition: {x: -17, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4333933683516779561}
@@ -89,7 +89,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3994386198288037523}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 58.24, y: 0.5, z: 24.22}
   m_LocalScale: {x: 1, y: 1, z: 1.5}
   m_Children:
@@ -199,16 +199,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 549e3f7c88813784bb3313cdbd11d22e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnPointRight: {fileID: 2719266290054364026}
-  spawnPointLeft: {fileID: 7343597711968324907}
+  spawnPoints:
+  - {fileID: 2719266290054364026}
+  - {fileID: 7343597711968324907}
   dangers:
-  - {fileID: 7072577845906227395, guid: 078746a51434b5f45998abc86bba7d98, type: 3}
-  seriesOfDangers:
+  - {fileID: 6019194486871981977, guid: 5d8438bb4956cf44d8b6e9d637e63f3d, type: 3}
+  series:
     min: 1
     max: 1
-  speedRange:
-    min: 20
-    max: 30
-  timeBeforeDestrucion: 10
-  dangersSeriesSpacingTime: 1
-  timeForNewSeries: 7
+  speed:
+    min: 10
+    max: 15
+  spawnRate:
+    min: 5
+    max: 10
+  spacing: 0.5
+  duration: 20

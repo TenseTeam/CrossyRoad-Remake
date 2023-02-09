@@ -5,7 +5,7 @@ using UnityEngine;
 public class ScoreOnTrigger : MonoBehaviour
 {
     public string triggerTag = "Player";
-    public uint toIncrease = 1;
+    public ushort toIncrease = 1;
 
 
     private void OnTriggerEnter(Collider other)
@@ -13,7 +13,7 @@ public class ScoreOnTrigger : MonoBehaviour
         if (other.CompareTag(triggerTag))
         {
             Extension.Methods.Finder.DestroyLastComponentOfType<Collider>(gameObject);
-            ScoreManager.instance.Increase((int)toIncrease);
+            ScoreManager.instance.Increase(toIncrease);
         }
     }
 }

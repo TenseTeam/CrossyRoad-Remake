@@ -5,45 +5,55 @@ using Extension.Types;
 
 public class RandomDangersSpawner : MonoBehaviour
 {
-    public Transform spawnPointRight, spawnPointLeft;
-    public GameObject[] dangers;
-    public IntRange seriesOfDangers;
-    public FloatRange speedRange;
-    public float timeBeforeDestrucion;
-    public float dangersSeriesSpacingTime;
-    public float timeForNewSeries;
+    [Header("Origins")]
+    public Transform[] spawnPoints;
 
+    [Header("Dangers")]
+    public GameObject[] dangers;
+
+    [Header("Series")]
+    public IntRange series;
+    public FloatRange speed;
+    public IntRange spawnRate;
+    public float spacing;
+
+    [Header("Dispose")]
+    [Range(1, 60)] public float duration = 30;
+
+    private int _timeForNewSeries;
     private int _dangersToSpawn;
     private float _dangerSpeed;
     private Transform _spawnPoint;
 
+
     private void Start()
     {
+        _timeForNewSeries = spawnRate.Random();
+        _spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
 
-        _spawnPoint = Random.Range(0, 1 + 1) == 0 ? spawnPointRight : spawnPointLeft;
-
-        _dangersToSpawn = seriesOfDangers.Random();
-        _dangerSpeed = speedRange.Random();
+        _dangersToSpawn = series.Random();
+        _dangerSpeed = speed.Random();
 
         StartCoroutine(SpawnLoop());
     }
 
 
 
-    IEnumerator SpawnLoop()
+    private IEnumerator SpawnLoop()
     {
+        yield return new WaitForSeconds(_timeForNewSeries);
+
         for (int i = 0; i < _dangersToSpawn; i++)
         {
             GameObject danger = Instantiate(dangers[Random.Range(0, dangers.Length)], _spawnPoint.position, _spawnPoint.rotation);
             danger.transform.SetParent(transform);
             MoveForwardFor mf = danger.AddComponent<MoveForwardFor>();
             mf.speed = _dangerSpeed;
-            mf.timeBeforeDestruction = timeBeforeDestrucion;
+            mf.duration = this.duration;
 
-            yield return new WaitForSeconds(dangersSeriesSpacingTime);
+            yield return new WaitForSeconds(spacing);
         }
-
-        yield return new WaitForSeconds(timeForNewSeries);
+        
         StartCoroutine(SpawnLoop());
     }
 }
