@@ -268,10 +268,10 @@ MonoBehaviour:
   dangers:
   - {fileID: 27091608232277559, guid: 54087cdfff5feb045a929d293afc30a1, type: 3}
   - {fileID: 699235269431513950, guid: 4f0b488050db2824fa04655f8e9e859e, type: 3}
-  - {fileID: 8903748750092214501, guid: ac19af28202d6314ab49737421b4bd94, type: 3}
-  - {fileID: 5775250081714420867, guid: 78ca292197dd5174881bbf695863f58f, type: 3}
-  - {fileID: 2386640340597476675, guid: 385795aa0c3cfcc49a9aafb0954e75e8, type: 3}
-  - {fileID: 6003382155152506612, guid: ba8c81e911bfdbe408a730334f109c1d, type: 3}
+  - {fileID: 4228268600490048257, guid: ac19af28202d6314ab49737421b4bd94, type: 3}
+  - {fileID: 5744898883434714000, guid: 78ca292197dd5174881bbf695863f58f, type: 3}
+  - {fileID: 7212797050835473987, guid: 385795aa0c3cfcc49a9aafb0954e75e8, type: 3}
+  - {fileID: 1575636431585170290, guid: ba8c81e911bfdbe408a730334f109c1d, type: 3}
   forewarningTime: 1
   series:
     min: 1

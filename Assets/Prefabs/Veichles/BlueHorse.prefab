@@ -90,6 +90,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2716200066376748414}
+  - component: {fileID: -1660846975682207797}
+  - component: {fileID: -3656453068937198381}
   m_Layer: 0
   m_Name: BlueHorse
   m_TagString: Untagged
@@ -112,6 +114,31 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-1660846975682207797
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 699235269431513950}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97d0143236bd4ab4d88a913e3c61fee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!65 &-3656453068937198381
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 699235269431513950}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.3681488, y: 1, z: 1.28121}
+  m_Center: {x: -0.009017944, y: 0.5, z: 0.17637539}
 --- !u!1 &2780746619178480485
 GameObject:
   m_ObjectHideFlags: 0
@@ -445,7 +472,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6735678183144874146}
-  - component: {fileID: 6211096321303165466}
   - component: {fileID: 6211096321303165465}
   m_Layer: 0
   m_Name: BlueHorse
@@ -474,19 +500,6 @@ Transform:
   m_Father: {fileID: 2716200066376748414}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
---- !u!65 &6211096321303165466
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6211096321303165464}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1.5578613, y: 1, z: 0.37250137}
-  m_Center: {x: 0.032691956, y: 0, z: 0.0034236908}
 --- !u!95 &6211096321303165465
 Animator:
   serializedVersion: 5
