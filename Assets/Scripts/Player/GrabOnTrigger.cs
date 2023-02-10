@@ -5,8 +5,10 @@ using UnityEngine;
 public class GrabOnTrigger : MonoBehaviour
 {
     public string triggerTag = "";
+    public bool HasGrabbed { get => _hasGrabbed; }
 
-    internal bool hasGrabbed;
+    private bool _hasGrabbed;
+
 
     private void OnTriggerEnter(Collider other)
     {
@@ -14,7 +16,7 @@ public class GrabOnTrigger : MonoBehaviour
         {
             Debug.Log(other.transform.tag);
 
-            hasGrabbed = true;
+            _hasGrabbed = true;
 
             if (other.transform.TryGetComponent<Rigidbody>(out Rigidbody rb))
             {

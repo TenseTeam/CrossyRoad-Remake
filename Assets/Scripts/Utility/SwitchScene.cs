@@ -15,7 +15,7 @@ public class SwitchScene : MonoBehaviour
 
     private IEnumerator LoadSceneIn()
     {
-        yield return new WaitForSeconds(time); 
+        yield return new WaitForSeconds(time);
         SceneManager.LoadScene(sceneToLoad, LoadSceneMode.Single);
     }
 

@@ -12,31 +12,7 @@ public class ChaserCamera : MonoBehaviour
 
     [Header("Distances")]
     [Range(1, 100)] public float recoverAt = 30;
-    [Range(1, 100)] public float deathAt = 10;
-
-    [Header("Death")]
-    public GameObject grabber;
-    public GameObject restartUI;
-    public float speedCentering;
-    public float offsetForCentering;
-
-    private SimpleMove _movementPlayer;
-    private GrabOnTrigger _grab;
-
-    private void Awake()
-    {
-        //Change SimpleMove with the RealMovement of the Player or disable his controls
-        if (target.TryGetComponent<SimpleMove>(out SimpleMove mov))
-        {
-            _movementPlayer = mov;
-        }
-
-        if (grabber.TryGetComponent<GrabOnTrigger>(out GrabOnTrigger grab))
-        {
-            _grab = grab;
-        }
-    }
-
+    [Range(1, 100)] public float outOfViewAt = 10;
 
     private void Start()
     {
@@ -51,7 +27,7 @@ public class ChaserCamera : MonoBehaviour
     {
         float distance = Mathf.Abs(transform.position.z - target.position.z);
 
-        while (distance > deathAt)
+        while (distance > outOfViewAt)
         {
             distance = Mathf.Abs(transform.position.z - target.position.z);
 
@@ -76,21 +52,37 @@ public class ChaserCamera : MonoBehaviour
     }
 
 
-    public void CameraDeath() 
+    public void CameraDeath(float speed, float offset, GrabOnTrigger grabber) 
     {
-        StartCoroutine(LerpCamera());
+        StartCoroutine(LerpCamera(speed, offset, grabber));
     }
 
-    private IEnumerator LerpCamera()
+    public void CameraDeath(float speed, float offset)
     {
-        while (!_grab.hasGrabbed)
+        StartCoroutine(LerpCamera(speed, offset));
+    }
+
+    private IEnumerator LerpCamera(float speed, float offset, GrabOnTrigger grabber)
+    {
+        while (!grabber.HasGrabbed)
         {
-            float lerpZ = Mathf.Lerp(transform.position.z, target.position.z - offsetForCentering, speedCentering * Time.fixedDeltaTime);
+            float lerpZ = Mathf.Lerp(transform.position.z, target.position.z - offset, speed * Time.fixedDeltaTime);
             transform.position = new Vector3(transform.position.x, transform.position.y, lerpZ);
 
             yield return new WaitForFixedUpdate();
         }
 
         yield return null;
+    }
+
+    private IEnumerator LerpCamera(float speed, float offset)
+    {
+        while (true)
+        {
+            float lerpZ = Mathf.Lerp(transform.position.z, target.position.z - offset, speed * Time.fixedDeltaTime);
+            transform.position = new Vector3(transform.position.x, transform.position.y, lerpZ);
+
+            yield return new WaitForFixedUpdate();
+        }
     }
 }

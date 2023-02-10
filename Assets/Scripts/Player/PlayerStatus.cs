@@ -8,6 +8,12 @@ public class PlayerStatus : MonoBehaviour
     public GameObject eagle;
     public GameObject restartUI;
 
+    [Header("OnDeath")]
+    public float backOffsetEagle = 10;
+    public float backOffsetAccident = 2;
+    public float cameraSpeedCentering = 2;
+
+
     private SimpleMove _movementPlayer;
     private GrabOnTrigger _grabTrigger;
 
@@ -26,17 +32,22 @@ public class PlayerStatus : MonoBehaviour
     public void DeathByEagle()
     {
         Death();
+        chaserCamera.CameraDeath(cameraSpeedCentering, backOffsetEagle, _grabTrigger);
         eagle.SetActive(true);
         //Setting the X of the Grabber (The Eagle) equals to the player's one so the grabber fly above him.
         eagle.transform.position = new Vector3(transform.position.x, eagle.transform.position.y, eagle.transform.position.z);
     }
 
+    public void DeathByAccident()
+    {
+        Death();
+        chaserCamera.CameraDeath(cameraSpeedCentering, backOffsetAccident);
+    }
 
-    public void Death()
+    private void Death()
     {
         restartUI.SetActive(true);
         _movementPlayer.enabled = false;
         ScoreManager.instance.SaveTopScore();
-        chaserCamera.CameraDeath();
     }
 }

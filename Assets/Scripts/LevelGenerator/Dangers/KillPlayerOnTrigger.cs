@@ -10,7 +10,7 @@ public class KillPlayerOnTrigger : MonoBehaviour
         {
             if(other.TryGetComponent<PlayerStatus>(out PlayerStatus ps))
             {
-                ps.Death();
+                ps.DeathByAccident();
             }
         }
     }
