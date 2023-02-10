@@ -9,25 +9,30 @@ public class PlayerMovement : MonoBehaviour
     private float _ElapsedTime;
     private Quaternion _StartRotation;
     private Quaternion _EndRotation;
-    private Vector3 _rotation = new Vector3(0, 90, 0);
 
     [Header("Forward movement")]
     [Tooltip("Distance for every forward 'jump' movement")]
-    public float Distance = 1;
+    [SerializeField] public float Distance = 1;
     [Tooltip("Speed of the forward movement")]
-    public float Speed;
+    [SerializeField] public float Speed;
     [Header("Right/left rotation")]
     [Tooltip("Speed of the rotation")]
-    public float RotationSpeed;
+    [SerializeField] public float RotationSpeed;
+    [Tooltip("Angle of the rotation in Y axis")]
+    [SerializeField] public float RotationAngle;
+    private Vector3 _rotation;
 
     [Header("Raycast (to check obstacles)")]
     [Tooltip("range of the ray to check if there's something ahead of the player")]
-    public float rayRange = 1;
+    [SerializeField] public float rayRange = 1;
     [Tooltip("Tag of the non-killing obstacles")]
-    public string ObstacleTag;
+    [SerializeField] public string ObstacleTag;
     private bool _obstacled = false;
 
-
+    private void Start()
+    {
+        _rotation = new Vector3(0, RotationAngle, 0);
+    }
     // Update is called once per frame
     void Update()
     {
@@ -42,6 +47,7 @@ public class PlayerMovement : MonoBehaviour
         {
             if (hit.collider.CompareTag("ObstacleTag"))
                 _obstacled = true;
+            else _obstacled = false;
         }
         else _obstacled = false;
 
@@ -49,20 +55,20 @@ public class PlayerMovement : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.UpArrow))
             {
-                ForwardMove(Speed);
+                StartCoroutine(ForwardMove(Speed));
             }
         }
 
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
-            _EndRotation = Quaternion.Euler(_rotation);
-            RotationMove(RotationSpeed);
+            _EndRotation = Quaternion.Euler(-_rotation);
+            StartCoroutine(RotationMove(RotationSpeed));
         }
 
         if (Input.GetKeyDown(KeyCode.RightArrow))
         {
             _EndRotation = Quaternion.Euler(_rotation);
-            RotationMove(RotationSpeed);
+            StartCoroutine(RotationMove(RotationSpeed));
         }
 
     }
