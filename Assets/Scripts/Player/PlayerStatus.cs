@@ -10,7 +10,7 @@ public class PlayerStatus : MonoBehaviour
 
     [Header("OnDeath")]
     public float backOffsetEagle = 10;
-    public float backOffsetAccident = 2;
+    public float backOffsetAccident = 10;
     public float cameraSpeedCentering = 2;
 
 
