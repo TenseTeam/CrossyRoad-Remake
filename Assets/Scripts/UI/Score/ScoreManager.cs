@@ -12,7 +12,7 @@ public class ScoreManager : MonoBehaviour
     private int _score = 0;
     private int _topScore = 0;
 
-    private static string TOPSCORE = "TOPSCORE";
+    private const string TOPSCORE = "TOPSCORE";
 
     private void Awake()
     {

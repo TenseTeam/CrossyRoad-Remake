@@ -14,8 +14,6 @@ public class GrabOnTrigger : MonoBehaviour
     {
         if (other.CompareTag(triggerTag))
         {
-            Debug.Log(other.transform.tag);
-
             _hasGrabbed = true;
 
             if (other.transform.TryGetComponent<Rigidbody>(out Rigidbody rb))
