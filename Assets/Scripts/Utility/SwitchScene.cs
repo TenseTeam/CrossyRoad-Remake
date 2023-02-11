@@ -18,5 +18,4 @@ public class SwitchScene : MonoBehaviour
         yield return new WaitForSeconds(time);
         SceneManager.LoadScene(sceneToLoad, LoadSceneMode.Single);
     }
-
 }

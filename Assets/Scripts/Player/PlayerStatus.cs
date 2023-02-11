@@ -4,10 +4,6 @@ using UnityEngine;
 
 public class PlayerStatus : MonoBehaviour
 {
-    public ChaserCamera chaserCamera;
-    public GameObject eagle;
-    public GameObject restartUI;
-
     [Header("OnDeath")]
     public float backOffsetEagle = 10;
     public float backOffsetAccident = 10;
@@ -18,11 +14,28 @@ public class PlayerStatus : MonoBehaviour
     private GrabOnTrigger _grabTrigger;
 
 
+    private ChaserCamera _chaserCamera;
+    private GameObject _enemy;
+    private GameObject _menuUI;
+    private GameObject _resartButton;
+
     void Start()
     {
-        _movementPlayer = GetComponent<SimpleMove>();
+        if(Extension.Methods.Finder.TryFindGameObjectWithTag(Constants.Tags.PLAYER_REFERENCES, out GameObject go))
+        {
+            if (go.TryGetComponent<PlayerReferences>(out PlayerReferences pf))
+            {
+                _chaserCamera = pf.cam;
+                _enemy = pf.enemy;
+                _menuUI = pf.menuUI;
+                _resartButton = pf.menuUI.transform.Find("Restart").gameObject;
+            }
+        }
 
-        if (eagle.TryGetComponent<GrabOnTrigger>(out GrabOnTrigger grab))
+
+        _movementPlayer = GetComponent<SimpleMove>(); // To change with its real movement
+
+        if (_enemy.TryGetComponent<GrabOnTrigger>(out GrabOnTrigger grab))
         {
             _grabTrigger = grab;
         }
@@ -32,21 +45,22 @@ public class PlayerStatus : MonoBehaviour
     public void DeathByEagle()
     {
         Death();
-        chaserCamera.CameraDeath(cameraSpeedCentering, backOffsetEagle, _grabTrigger);
-        eagle.SetActive(true);
+        _chaserCamera.CameraDeath(cameraSpeedCentering, backOffsetEagle, _grabTrigger);
+        _enemy.SetActive(true);
         //Setting the X of the Grabber (The Eagle) equals to the player's one so the grabber fly above him.
-        eagle.transform.position = new Vector3(transform.position.x, eagle.transform.position.y, eagle.transform.position.z);
+        _enemy.transform.position = new Vector3(transform.position.x, _enemy.transform.position.y, _enemy.transform.position.z);
     }
 
     public void DeathByAccident()
     {
         Death();
-        chaserCamera.CameraDeath(cameraSpeedCentering, backOffsetAccident);
+        _chaserCamera.CameraDeath(cameraSpeedCentering, backOffsetAccident);
     }
 
     private void Death()
     {
-        restartUI.SetActive(true);
+        _menuUI.SetActive(true);
+        _resartButton.SetActive(true);
         _movementPlayer.enabled = false;
         ScoreManager.instance.SaveTopScore();
     }

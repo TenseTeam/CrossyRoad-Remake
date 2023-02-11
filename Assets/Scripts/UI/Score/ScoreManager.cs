@@ -12,13 +12,12 @@ public class ScoreManager : MonoBehaviour
     private int _score = 0;
     private int _topScore = 0;
 
-    private const string TOPSCORE = "TOPSCORE";
 
     private void Awake()
     {
         instance = this;
 
-        _topScore = PlayerPrefs.GetInt(TOPSCORE);
+        _topScore = PlayerPrefs.GetInt(Constants.SavePrefs.TOPSCORE);
         UpdateUI();
     }
 
@@ -32,7 +31,7 @@ public class ScoreManager : MonoBehaviour
 
     public void SaveTopScore()
     {
-        PlayerPrefs.SetInt(TOPSCORE, _score);
+        PlayerPrefs.SetInt(Constants.SavePrefs.TOPSCORE, _topScore);
     }
 
     private void UpdateUI()

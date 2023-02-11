@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ChaserCamera : MonoBehaviour
 {
-    public Transform target;
+    public string targetTag = Constants.Tags.PLAYER;
 
     [Header("Speeds")]
     [Range(1, 100)] public float speed = 10;
@@ -14,9 +14,23 @@ public class ChaserCamera : MonoBehaviour
     [Range(1, 100)] public float recoverAt = 30;
     [Range(1, 100)] public float outOfViewAt = 10;
 
-    private void Start()
+    [Header("UI")]
+    public GameObject menuUI;
+
+    private bool started = false;
+    private Transform _target;
+
+
+    public Transform Target { get => _target; set => _target = value; }
+
+    private void Update()
     {
-        StartCoroutine(MoveForward());
+        if (!started && (Input.GetAxis("Vertical") != 0 || Input.GetAxis("Horizontal") != 0)) 
+        {
+            menuUI.SetActive(false);
+            StartCoroutine(MoveForward());
+            started = true;
+        }
     }
 
     /// <summary>
@@ -25,11 +39,11 @@ public class ChaserCamera : MonoBehaviour
     /// <returns></returns>
     private IEnumerator MoveForward()
     {
-        float distance = Mathf.Abs(transform.position.z - target.position.z);
+        float distance = Mathf.Abs(transform.position.z - _target.position.z);
 
         while (distance > outOfViewAt)
         {
-            distance = Mathf.Abs(transform.position.z - target.position.z);
+            distance = Mathf.Abs(transform.position.z - _target.position.z);
 
             //Debug.Log(distance);
 
@@ -43,7 +57,7 @@ public class ChaserCamera : MonoBehaviour
         }
 
         
-        if(target.TryGetComponent(out PlayerStatus ps)) 
+        if(_target.TryGetComponent(out PlayerStatus ps)) 
         {
             ps.DeathByEagle();
         }
@@ -66,7 +80,7 @@ public class ChaserCamera : MonoBehaviour
     {
         while (!grabber.HasGrabbed)
         {
-            float lerpZ = Mathf.Lerp(transform.position.z, target.position.z - offset, speed * Time.fixedDeltaTime);
+            float lerpZ = Mathf.Lerp(transform.position.z, _target.position.z - offset, speed * Time.fixedDeltaTime);
             transform.position = new Vector3(transform.position.x, transform.position.y, lerpZ);
 
             yield return new WaitForFixedUpdate();
@@ -79,7 +93,7 @@ public class ChaserCamera : MonoBehaviour
     {
         while (true)
         {
-            float lerpZ = Mathf.Lerp(transform.position.z, target.position.z - offset, speed * Time.fixedDeltaTime);
+            float lerpZ = Mathf.Lerp(transform.position.z, _target.position.z - offset, speed * Time.fixedDeltaTime);
             transform.position = new Vector3(transform.position.x, transform.position.y, lerpZ);
 
             yield return new WaitForFixedUpdate();

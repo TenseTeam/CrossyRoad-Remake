@@ -6,9 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/_Scenes/Development/MapLoopGeneration.unity
+    path: Assets/_Scenes/Development/TestingScene.unity
     guid: eeb50e5b1e15b9e4a913728484a19693
   - enabled: 1
     path: Assets/_Scenes/Levels/Horror Level.unity
     guid: b5bb92902882fb24ea0e69a3926d40a2
+  - enabled: 1
+    path: Assets/_Scenes/Development/CharactersSceneExample.unity
+    guid: 929ac5c342b3a1c44906dbf751eac30c
   m_configObjects: {}

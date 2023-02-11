@@ -17,7 +17,7 @@ public class CameraFade : MonoBehaviour
     }
 
     [Tooltip("Fade on Start condition")] public StartFade fadeStart = StartFade.NONE; // starting fade
-    [Tooltip("Fade duration time in seconds"), Range(1, 100), SerializeField] private float _fadeDuration = 1f; // fade time in seconds duration
+    [Tooltip("Fade duration time in seconds"), Range(1, 100)] public float fadeDuration = 1f; // fade time in seconds duration
     [Tooltip("Color of the fade")] public Color fadeColor;
 
     private float alpha = 0f; // Current alpha value of the fade effect.
@@ -28,25 +28,25 @@ public class CameraFade : MonoBehaviour
         {
             case StartFade.FADEIN:
 
-                DoFadeIn(_fadeDuration);
+                DoFadeIn(fadeDuration);
 
                 break;
 
             case StartFade.FADEOUT:
 
-                DoFadeOut(_fadeDuration);
+                DoFadeOut(fadeDuration);
 
                 break;
 
             case StartFade.FADEIN_FADEOUT:
-                DoFadeInOut(_fadeDuration);
+                DoFadeInOut(fadeDuration);
 
                 break;
 
 
             case StartFade.FADEOUT_FADEIN:
 
-                DoFadeOutIn(_fadeDuration);
+                DoFadeOutIn(fadeDuration);
 
                 break;
 
