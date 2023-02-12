@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class ChaserCamera : MonoBehaviour
 {
+    [Header("Target")]
     public string targetTag = Constants.Tags.PLAYER;
+    public float followTargetPositionXOffset = 5;
 
     [Header("Speeds")]
-    [Range(1, 100)] public float speed = 10;
+    [Range(1, 100)] public float lateralFollowSpeed = 10;
+    [Range(1, 100)] public float chaseSpeed = 10;
     [Range(1, 100)] public float recoverSpeed = 20;
 
     [Header("Distances")]
@@ -28,7 +31,7 @@ public class ChaserCamera : MonoBehaviour
         if (!started && (Input.GetAxis("Vertical") != 0 || Input.GetAxis("Horizontal") != 0)) 
         {
             menuUI.SetActive(false);
-            StartCoroutine(MoveForward());
+            StartCoroutine(CameraMovement());
             started = true;
         }
     }
@@ -37,7 +40,7 @@ public class ChaserCamera : MonoBehaviour
     /// Camera Move Forward
     /// </summary>
     /// <returns></returns>
-    private IEnumerator MoveForward()
+    private IEnumerator CameraMovement()
     {
         float distance = Mathf.Abs(transform.position.z - _target.position.z);
 
@@ -45,11 +48,14 @@ public class ChaserCamera : MonoBehaviour
         {
             distance = Mathf.Abs(transform.position.z - _target.position.z);
 
-            //Debug.Log(distance);
+#if DEBUG
+            Debug.Log(distance);
+#endif
 
+            SideFollow();
 
             if (distance < recoverAt)
-                transform.position += Vector3.forward * speed * Time.fixedDeltaTime;
+                transform.position += Vector3.forward * chaseSpeed * Time.fixedDeltaTime;
             else
                 transform.position += Vector3.forward * recoverSpeed * Time.fixedDeltaTime;
 
@@ -65,18 +71,24 @@ public class ChaserCamera : MonoBehaviour
         yield return null;
     }
 
-
-    public void CameraDeath(float speed, float offset, GrabOnTrigger grabber) 
+    private void SideFollow()
     {
-        StartCoroutine(LerpCamera(speed, offset, grabber));
+        float lerpX = Mathf.Lerp(transform.position.x + followTargetPositionXOffset, _target.position.x, lateralFollowSpeed * Time.fixedDeltaTime);
+        transform.position = new Vector3(lerpX, transform.position.y, transform.position.z);
     }
 
-    public void CameraDeath(float speed, float offset)
+    public void StartCameraLerp(float speed, float offset, EnemyGrabOnTrigger grabber) 
     {
-        StartCoroutine(LerpCamera(speed, offset));
+        StartCoroutine(CameraLerp(speed, offset, grabber));
     }
 
-    private IEnumerator LerpCamera(float speed, float offset, GrabOnTrigger grabber)
+    public void StartCameraLerp(float speed, float offset)
+    {
+        StartCoroutine(CameraLerp(speed, offset));
+    }
+
+
+    private IEnumerator CameraLerp(float speed, float offset, EnemyGrabOnTrigger grabber)
     {
         while (!grabber.HasGrabbed)
         {
@@ -89,7 +101,7 @@ public class ChaserCamera : MonoBehaviour
         yield return null;
     }
 
-    private IEnumerator LerpCamera(float speed, float offset)
+    private IEnumerator CameraLerp(float speed, float offset)
     {
         while (true)
         {

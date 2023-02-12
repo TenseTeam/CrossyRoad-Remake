@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GrabOnTrigger : MonoBehaviour
+public class EnemyGrabOnTrigger : MonoBehaviour
 {
     public string triggerTag = "";
     public bool HasGrabbed { get => _hasGrabbed; }

@@ -11,7 +11,7 @@ public class PlayerStatus : MonoBehaviour
 
 
     private SimpleMove _movementPlayer;
-    private GrabOnTrigger _grabTrigger;
+    private EnemyGrabOnTrigger _grabTrigger;
 
 
     private ChaserCamera _chaserCamera;
@@ -35,7 +35,7 @@ public class PlayerStatus : MonoBehaviour
 
         _movementPlayer = GetComponent<SimpleMove>(); // To change with its real movement
 
-        if (_enemy.TryGetComponent<GrabOnTrigger>(out GrabOnTrigger grab))
+        if (_enemy.TryGetComponent<EnemyGrabOnTrigger>(out EnemyGrabOnTrigger grab))
         {
             _grabTrigger = grab;
         }
@@ -45,7 +45,7 @@ public class PlayerStatus : MonoBehaviour
     public void DeathByEagle()
     {
         Death();
-        _chaserCamera.CameraDeath(cameraSpeedCentering, backOffsetEagle, _grabTrigger);
+        _chaserCamera.StartCameraLerp(cameraSpeedCentering, backOffsetEagle, _grabTrigger);
         _enemy.SetActive(true);
         //Setting the X of the Grabber (The Eagle) equals to the player's one so the grabber fly above him.
         _enemy.transform.position = new Vector3(transform.position.x, _enemy.transform.position.y, _enemy.transform.position.z);
@@ -54,7 +54,7 @@ public class PlayerStatus : MonoBehaviour
     public void DeathByAccident()
     {
         Death();
-        _chaserCamera.CameraDeath(cameraSpeedCentering, backOffsetAccident);
+        _chaserCamera.StartCameraLerp(cameraSpeedCentering, backOffsetAccident);
     }
 
     private void Death()

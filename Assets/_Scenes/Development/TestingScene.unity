@@ -459,8 +459,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetTag: Player
-  speed: 2
-  recoverSpeed: 10
+  followTargetPositionXOffset: 0
+  lateralFollowSpeed: 1
+  chaseSpeed: 1
+  recoverSpeed: 5
   recoverAt: 30
   outOfViewAt: 10
   menuUI: {fileID: 781832139}
@@ -477,7 +479,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fadeStart: 1
-  _fadeDuration: 1
+  fadeDuration: 1
   fadeColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &457889223
 GameObject:

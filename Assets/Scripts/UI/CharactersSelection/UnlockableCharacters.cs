@@ -24,7 +24,9 @@ public class UnlockableCharacters : MonoBehaviour
             else
                 character.isUnlocked = true; // Making sure the default character is unlocked
 
+#if DEBUG
             Debug.Log($"CHAR ID {character.id} IS UNLOCKED? {character.isUnlocked}");
+#endif
         }
     }
 
