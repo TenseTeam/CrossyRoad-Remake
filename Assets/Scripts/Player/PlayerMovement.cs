@@ -4,97 +4,97 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    private Vector3 _StartPos;
-    private Vector3 _EndPos;
-    private float _ElapsedTime;
-    private Quaternion _StartRotation;
-    private Quaternion _EndRotation;
 
     [Header("Forward movement")]
     [Tooltip("Distance for every forward 'jump' movement")]
-    [SerializeField] public float Distance = 1;
+    public float Distance = 1;
     [Tooltip("Speed of the forward movement")]
-    [SerializeField] public float Speed;
+    public float Speed;
+
     [Header("Right/left rotation")]
     [Tooltip("Speed of the rotation")]
-    [SerializeField] public float RotationSpeed;
-    [Tooltip("Angle of the rotation in Y axis")]
-    [SerializeField] public float RotationAngle;
-    private Vector3 _rotation;
+    public float RotationSpeed;
 
     [Header("Raycast (to check obstacles)")]
-    [Tooltip("range of the ray to check if there's something ahead of the player")]
-    [SerializeField] public float rayRange = 1;
-    [Tooltip("Tag of the non-killing obstacles")]
-    [SerializeField] public string ObstacleTag;
-    private bool _obstacled = false;
+    [Tooltip("range of the ray to check if there's something ahead of the player")] 
+    public float rayRange = 1;
+    [Tooltip("Layer of the non-killing obstacles")]
+    public LayerMask ObstacleLayer;
 
-    private void Start()
-    {
-        _rotation = new Vector3(0, RotationAngle, 0);
-    }
+
     // Update is called once per frame
     void Update()
     {
-        //direction of the raycast
-        Vector3 rayDirection = Vector3.forward;
-        //effective raycast
-        Ray ray = new Ray(transform.position, transform.TransformDirection(rayDirection * rayRange));
-        //debug to see where is the raycast by drawing it in scene
-        Debug.DrawRay(transform.position, transform.TransformDirection(rayDirection * rayRange));
-        //on raycast hit
-        if (Physics.Raycast(ray, out RaycastHit hit, rayRange))
+        //can move only if not obstacled by anything
+        if (!IsObstacled())
         {
-            if (hit.collider.CompareTag("ObstacleTag"))
-                _obstacled = true;
-            else _obstacled = false;
-        }
-        else _obstacled = false;
-
-        if (_obstacled == false)
-        {
+            //forward movement and rotation
             if (Input.GetKeyDown(KeyCode.UpArrow))
             {
-                StartCoroutine(ForwardMove(Speed));
+                StartCoroutine(RotateAndMove(new Vector3(transform.rotation.x, 0, transform.rotation.z)));
+            }
+            //left movement and rotation
+            if (Input.GetKeyDown(KeyCode.LeftArrow))
+            {
+                StartCoroutine(RotateAndMove(new Vector3(transform.rotation.x, -90, transform.rotation.z)));
+            }
+            //right movement and rotation
+            if (Input.GetKeyDown(KeyCode.RightArrow))
+            {
+                StartCoroutine(RotateAndMove(new Vector3(transform.rotation.x, 90, transform.rotation.z)));
+            }
+            //backward movement and rotation
+            if (Input.GetKeyDown(KeyCode.DownArrow))
+            {
+           
+                StartCoroutine(RotateAndMove(new Vector3(transform.rotation.x, 180, transform.rotation.z)));
             }
         }
-
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
-        {
-            _EndRotation = Quaternion.Euler(-_rotation);
-            StartCoroutine(RotationMove(RotationSpeed));
-        }
-
-        if (Input.GetKeyDown(KeyCode.RightArrow))
-        {
-            _EndRotation = Quaternion.Euler(_rotation);
-            StartCoroutine(RotationMove(RotationSpeed));
-        }
-
     }
-    private IEnumerator ForwardMove(float time)
+    /// <summary>
+    /// Rotation [first] and forward movement [last]
+    /// </summary>
+    /// <param name="rotation"></param>
+    /// <returns></returns>
+    private IEnumerator RotateAndMove(Vector3 rotation)
     {
-        _StartPos = transform.position;
-        _EndPos = transform.position + (transform.forward * Distance);
-        _ElapsedTime = 0;
+        float elapsedTime = 0;
 
-        while (_ElapsedTime < time)
+        while (elapsedTime < RotationSpeed)
         {
-            transform.position = Vector3.Lerp(_StartPos, _EndPos, (_ElapsedTime / time));
-            _ElapsedTime += Time.deltaTime;
-            yield return null;
+            transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(rotation), 1 - (elapsedTime / RotationSpeed));
+            elapsedTime += Time.fixedDeltaTime;
+            yield return new WaitForFixedUpdate();
         }
+        StartCoroutine(MoveForward());
+        yield return null;
     }
-    private IEnumerator RotationMove(float time)
+    /// <summary>
+    /// Forward movement (based of player transform)
+    /// </summary>
+    /// <returns></returns>
+    private IEnumerator MoveForward()
     {
-        _StartRotation = transform.rotation;
-        _ElapsedTime = 0;
+        Vector3 endPos = transform.position + (transform.forward * Distance);
+        float elapsedTime = 0;
 
-        while (_ElapsedTime < time)
+        while (elapsedTime < Speed)
         {
-            transform.rotation = Quaternion.Lerp(_StartRotation, _EndRotation, 1 - (_ElapsedTime / time));
-            _ElapsedTime += Time.deltaTime;
-            yield return null;
+            transform.position = Vector3.Lerp(transform.position, endPos, elapsedTime / Speed);
+            elapsedTime += Time.fixedDeltaTime;
+            yield return new WaitForFixedUpdate();
         }
+        yield return null;
+    }
+    /// <summary>
+    /// set if the player is obstacled by something
+    /// </summary>
+    /// <returns></returns>
+    private bool IsObstacled()
+    {
+        //debug to see where is the raycast by drawing it in scene
+        Debug.DrawRay(transform.position, transform.forward * rayRange);
+        //on raycast hit
+        return Physics.Raycast(transform.position, transform.forward, rayRange, ObstacleLayer);
     }
 }
