@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 2737777103554660605}
   - component: {fileID: 1319926671320401752}
   - component: {fileID: 3870180984264405906}
+  - component: {fileID: -5441821291455988489}
+  - component: {fileID: 913028164508797061}
   m_Layer: 0
   m_Name: Coin
   m_TagString: Untagged
@@ -81,3 +83,29 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &-5441821291455988489
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3365694606873367111}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 717c38322ed70d140a53fe8e5b56a19e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerTag: Player
+--- !u!65 &913028164508797061
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3365694606873367111}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.69824034, y: 0.3, z: 0.7333334}
+  m_Center: {x: 0, y: 0.15, z: 0}

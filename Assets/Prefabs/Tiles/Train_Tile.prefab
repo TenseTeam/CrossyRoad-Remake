@@ -31,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 24979395639588772}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 91.68527, y: 0.545442, z: 72.55508}
-  m_LocalScale: {x: 1, y: 1, z: 1.5}
+  m_LocalScale: {x: 1, y: 1, z: 2}
   m_Children:
   - {fileID: 3600537364388481936}
   - {fileID: 866318433743135324}
@@ -118,18 +118,21 @@ MonoBehaviour:
   - {fileID: 1846044036394115864}
   - {fileID: 4914263899069132174}
   dangers:
-  - {fileID: 6019194486871981977, guid: 5d8438bb4956cf44d8b6e9d637e63f3d, type: 3}
+  - {fileID: 3995056569162080224, guid: 40b02ca56815c78469b3966898270b50, type: 3}
+  - {fileID: 3843101103642811014, guid: b74e3aa4a6ecf2346acc26ce22b49f54, type: 3}
+  - {fileID: 432607542052097216, guid: c345af24423bfdf4f92c067d7f8e4109, type: 3}
+  forewarningTime: 1
   series:
     min: 1
     max: 1
   speed:
-    min: 50
-    max: 50
+    min: 60
+    max: 60
   spawnRate:
     min: 6
     max: 12
   spacing: 0
-  duration: 8
+  duration: 1
 --- !u!65 &2705971311351561689
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -371,7 +374,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5153889681042226348}
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 15.74, y: 0.5, z: 0}
+  m_LocalPosition: {x: 25, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 0.6666667}
   m_Children: []
   m_Father: {fileID: 798102558294764830}
@@ -401,7 +404,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7288568162422492362}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -15.72, y: 0.5, z: 0}
+  m_LocalPosition: {x: -25, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 0.6666667}
   m_Children: []
   m_Father: {fileID: 798102558294764830}

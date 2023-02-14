@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3063412d9159854fb025a273bd4cc8e, type: 3}
+  m_Name: ZombieChicken
+  m_EditorClassIdentifier: 
+  id: 0
+  isUnlocked: 1
+  prefab: {fileID: 1412163961838444669, guid: 7fe8e32b3a34a674c8645ad17e3ec05a, type: 3}

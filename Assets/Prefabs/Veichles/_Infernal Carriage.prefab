@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3626325421804964954}
   - component: {fileID: 3541578329219847203}
   m_Layer: 0
-  m_Name: Carriage 1
+  m_Name: _Infernal Carriage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
