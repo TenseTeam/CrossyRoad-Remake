@@ -20,34 +20,35 @@ public class PlayerMovement : MonoBehaviour
     public float rayRange = 1;
     [Tooltip("Layer of the non-killing obstacles")]
     public LayerMask ObstacleLayer;
-    
-    //see if the player is still moving or not
-    private bool m_IsMoving = false;
 
 
     // Update is called once per frame
     void Update()
     {
-        //forward movement and rotation
-        if (Input.GetKeyDown(KeyCode.UpArrow))
+        //can move only if not obstacled by anything
+        if (!IsObstacled())
         {
-            StartCoroutine(RotateAndMove(new Vector3(transform.rotation.x, 0, transform.rotation.z)));
-        }
-        //left movement and rotation
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
-        {
-            StartCoroutine(RotateAndMove(new Vector3(transform.rotation.x, -90, transform.rotation.z)));
-        }
-        //right movement and rotation
-        if (Input.GetKeyDown(KeyCode.RightArrow))
-        {
-            StartCoroutine(RotateAndMove(new Vector3(transform.rotation.x, 90, transform.rotation.z)));
-        }
-        //backward movement and rotation
-        if (Input.GetKeyDown(KeyCode.DownArrow))
-        {
+            //forward movement and rotation
+            if (Input.GetKeyDown(KeyCode.UpArrow))
+            {
+                StartCoroutine(RotateAndMove(new Vector3(transform.rotation.x, 0, transform.rotation.z)));
+            }
+            //left movement and rotation
+            if (Input.GetKeyDown(KeyCode.LeftArrow))
+            {
+                StartCoroutine(RotateAndMove(new Vector3(transform.rotation.x, -90, transform.rotation.z)));
+            }
+            //right movement and rotation
+            if (Input.GetKeyDown(KeyCode.RightArrow))
+            {
+                StartCoroutine(RotateAndMove(new Vector3(transform.rotation.x, 90, transform.rotation.z)));
+            }
+            //backward movement and rotation
+            if (Input.GetKeyDown(KeyCode.DownArrow))
+            {
            
-            StartCoroutine(RotateAndMove(new Vector3(transform.rotation.x, 180, transform.rotation.z)));
+                StartCoroutine(RotateAndMove(new Vector3(transform.rotation.x, 180, transform.rotation.z)));
+            }
         }
     }
     /// <summary>
@@ -58,17 +59,14 @@ public class PlayerMovement : MonoBehaviour
     private IEnumerator RotateAndMove(Vector3 rotation)
     {
         float elapsedTime = 0;
-        if (m_IsMoving == false)
+
+        while (elapsedTime < RotationSpeed)
         {
-            while (elapsedTime < RotationSpeed)
-            {
-                m_IsMoving = true;
-                yield return new WaitForFixedUpdate();
-                transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(rotation), 1 - (elapsedTime / RotationSpeed));
-                elapsedTime += Time.fixedDeltaTime;
-            }
-            StartCoroutine(MoveForward());
+            transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(rotation), 1 - (elapsedTime / RotationSpeed));
+            elapsedTime += Time.fixedDeltaTime;
+            yield return new WaitForFixedUpdate();
         }
+        StartCoroutine(MoveForward());
         yield return null;
     }
     /// <summary>
@@ -80,18 +78,13 @@ public class PlayerMovement : MonoBehaviour
         Vector3 endPos = transform.position + (transform.forward * Distance);
         float elapsedTime = 0;
 
-        //can move only if not obstacled by anything
-        if (!IsObstacled())
+        while (elapsedTime < Speed)
         {
-            while (elapsedTime < Speed)
-            {
-                transform.position = Vector3.Lerp(transform.position, endPos, elapsedTime / Speed);
-                elapsedTime += Time.fixedDeltaTime;
-                yield return new WaitForFixedUpdate();
-            }
-            m_IsMoving = false;
-            yield return null;
+            transform.position = Vector3.Lerp(transform.position, endPos, elapsedTime / Speed);
+            elapsedTime += Time.fixedDeltaTime;
+            yield return new WaitForFixedUpdate();
         }
+        yield return null;
     }
     /// <summary>
     /// set if the player is obstacled by something
