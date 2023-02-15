@@ -7,22 +7,26 @@ public class ObjectSpawnerInRandomTransform : MonoBehaviour
 {
     public GameObject prefab;
     [Range(0, 100)] public byte chance = 50;
-    public Transform[] positions;
+    public List<Transform> positions;
     public IntRange quantity;
 
     private void Start()
     {
         int counts = quantity.Random();
 
-        if (counts > positions.Length)
-            counts = positions.Length;
+        if (counts > positions.Count)
+            counts = positions.Count;
 
         for(int i = 0; i < counts; i++)
         {
-            if (chance > Random.Range(0, 101))
+            if (chance > Random.Range(0, 100 + 1))
             {
-                Instantiate(prefab, positions[Random.Range(0, positions.Length)].transform.position, Quaternion.identity)
+                int indexPos = Random.Range(0, positions.Count);
+
+                Instantiate(prefab, positions[indexPos].transform.position, Quaternion.identity)
                     .transform.SetParent(transform);
+
+                positions.RemoveAt(indexPos);
             }
         }
     }
