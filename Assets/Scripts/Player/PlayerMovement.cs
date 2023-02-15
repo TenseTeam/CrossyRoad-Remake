@@ -21,6 +21,8 @@ public class PlayerMovement : MonoBehaviour
     [Tooltip("Layer of the non-killing obstacles")]
     public LayerMask ObstacleLayer;
 
+    [Header("Audio")]
+    public AudioSource source;
 
     // Update is called once per frame
     void Update()
@@ -66,6 +68,7 @@ public class PlayerMovement : MonoBehaviour
             elapsedTime += Time.fixedDeltaTime;
             yield return new WaitForFixedUpdate();
         }
+        source.Play();
         StartCoroutine(MoveForward());
         yield return null;
     }
@@ -96,5 +99,11 @@ public class PlayerMovement : MonoBehaviour
         Debug.DrawRay(transform.position, transform.forward * rayRange);
         //on raycast hit
         return Physics.Raycast(transform.position, transform.forward, rayRange, ObstacleLayer);
+    }
+
+    private IEnumerator Sound()
+    {
+        source.Play();
+        yield return new WaitWhile(() => source.isPlaying);
     }
 }
