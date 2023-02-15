@@ -44,7 +44,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5220007669619285153}
-  m_Mesh: {fileID: -6564086670116265437, guid: fc67e663fb09b604db408f5aa8d00527, type: 3}
+  m_Mesh: {fileID: -2441658414131813105, guid: 6de38bf05549c1f488536aece7d46495, type: 3}
 --- !u!23 &6012812522067295604
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -120,7 +120,7 @@ MonoBehaviour:
   - {fileID: 1941273106255633928, guid: 9082835bc4affbd4d95e3368edb20f0d, type: 3}
   slots: 64646464646419140a140a191e231e646464646464
   spacing: 1.5
-  chance: 35
+  chance: 5
   specialPrefab: {fileID: 3365694606873367111, guid: 9199063c2e29e154680c55330633da65, type: 3}
   quantity:
     min: 1

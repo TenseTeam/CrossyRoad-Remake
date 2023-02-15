@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 0
   isUnlocked: 1
-  prefab: {fileID: 1412163961838444669, guid: 7fe8e32b3a34a674c8645ad17e3ec05a, type: 3}
+  prefab: {fileID: 4506145379469605819, guid: 7fe8e32b3a34a674c8645ad17e3ec05a, type: 3}

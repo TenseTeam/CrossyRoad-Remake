@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3486521776533404436}
   - component: {fileID: 562183044360893617}
   - component: {fileID: 2317578964332183675}
+  - component: {fileID: 8103994611634825737}
   m_Layer: 0
   m_Name: _SmallCoffin
   m_TagString: Untagged
@@ -81,3 +82,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &8103994611634825737
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4263023982692770222}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.955894, y: 1.1462871, z: 1.4666667}
+  m_Center: {x: 0, y: 0, z: 0}

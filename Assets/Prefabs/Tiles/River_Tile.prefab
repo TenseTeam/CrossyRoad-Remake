@@ -94,6 +94,7 @@ Transform:
   m_Children:
   - {fileID: 4279676056607575904}
   - {fileID: 7564632266732856629}
+  - {fileID: 2121777364452914947}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -104,7 +105,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4373474146132288091}
-  m_Mesh: {fileID: -2441658414131813105, guid: 6de38bf05549c1f488536aece7d46495, type: 3}
+  m_Mesh: {fileID: -6564086670116265437, guid: fc67e663fb09b604db408f5aa8d00527, type: 3}
 --- !u!23 &2860155062993175438
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -203,3 +204,60 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 13.495594, y: 5.4075365, z: 1.005}
   m_Center: {x: 0.07025719, y: 2.8126993, z: 0}
+--- !u!1 &8633834628297887297
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2121777364452914947}
+  - component: {fileID: 2315120078628393727}
+  - component: {fileID: 6448386833715390243}
+  m_Layer: 0
+  m_Name: Death Trigger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2121777364452914947
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8633834628297887297}
+  m_LocalRotation: {x: -0, y: 0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 0.5}
+  m_Children: []
+  m_Father: {fileID: 4033645529507412193}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2315120078628393727
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8633834628297887297}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97d0143236bd4ab4d88a913e3c61fee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!65 &6448386833715390243
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8633834628297887297}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 31.5, y: 0.4, z: 2}
+  m_Center: {x: 0, y: -0.5, z: 0}
