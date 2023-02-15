@@ -10,7 +10,7 @@ public class PlayerStatus : MonoBehaviour
     public float cameraSpeedCentering = 2;
 
 
-    private SimpleMove _movementPlayer;
+    private PlayerMovement _movementPlayer;
     private EnemyGrabOnTrigger _grabTrigger;
 
 
@@ -33,7 +33,7 @@ public class PlayerStatus : MonoBehaviour
         }
 
 
-        _movementPlayer = GetComponent<SimpleMove>(); // To change with its real movement
+        _movementPlayer = GetComponent<PlayerMovement>(); // To change with its real movement
 
         if (_enemy.TryGetComponent<EnemyGrabOnTrigger>(out EnemyGrabOnTrigger grab))
         {

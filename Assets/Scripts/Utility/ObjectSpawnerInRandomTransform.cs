@@ -19,8 +19,11 @@ public class ObjectSpawnerInRandomTransform : MonoBehaviour
 
         for(int i = 0; i < counts; i++)
         {
-            Instantiate(prefab, positions[Random.Range(0, positions.Length)].transform.position, Quaternion.identity)
-                .transform.SetParent(transform);
+            if (Random.Range(0, 101) > chance)
+            {
+                Instantiate(prefab, positions[Random.Range(0, positions.Length)].transform.position, Quaternion.identity)
+                    .transform.SetParent(transform);
+            }
         }
     }
 }

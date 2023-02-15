@@ -11,7 +11,7 @@ public class NextChunkTrigger : MonoBehaviour
         if (other.CompareTag(triggerTag))
         {
             Extension.Methods.Finder.DestroyLastComponentOfType<Collider>(gameObject);
-            LevelGeneratorLoop.instance.GenerateTiles();
+            LevelGeneratorLoop.instance.GenerateChunk();
         }
     }
 

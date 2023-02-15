@@ -22,11 +22,11 @@ public class LevelGeneratorLoop : MonoBehaviour
     private void Start()
     {
         _lastTile = _startingTile.gameObject;
-        GenerateTiles();
+        GenerateChunk();
     }
 
 
-    public void GenerateTiles()
+    public void GenerateChunk()
     {
         GameObject lastTile = _lastTile;
 
