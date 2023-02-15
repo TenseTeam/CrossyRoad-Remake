@@ -371,6 +371,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3246387907357033255, guid: 801cd082ecab2d24e8a10b3083189ae3, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3246387907357033255, guid: 801cd082ecab2d24e8a10b3083189ae3, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3246387907559106531, guid: 801cd082ecab2d24e8a10b3083189ae3, type: 3}
       propertyPath: m_Name
       value: Console
@@ -462,6 +470,14 @@ PrefabInstance:
     - target: {fileID: 3246387907617707091, guid: 801cd082ecab2d24e8a10b3083189ae3, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3246387908655273796, guid: 801cd082ecab2d24e8a10b3083189ae3, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 8.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3246387909038476764, guid: 801cd082ecab2d24e8a10b3083189ae3, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.00024414062
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 801cd082ecab2d24e8a10b3083189ae3, type: 3}
@@ -850,7 +866,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 1
+  m_fontStyle: 0
   m_HorizontalAlignment: 4
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -1646,7 +1662,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 0
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 466c7ff5f06048046b10df7f928159a3, type: 2}
   m_sharedMaterial: {fileID: -7410126658074520630, guid: 466c7ff5f06048046b10df7f928159a3, type: 2}
@@ -2128,7 +2144,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1770313718}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 68.38, y: 1.49, z: 24.89}
+  m_LocalPosition: {x: 70.53, y: 1.49, z: 28.359}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

@@ -142,7 +142,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 405f24ff3fb5f254cad72befb1b066c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Distance: 1.4
+  Distance: 1.75
   Speed: 0.1
   RotationSpeed: 0.1
   rayRange: 1

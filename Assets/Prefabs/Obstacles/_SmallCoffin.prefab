@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 562183044360893617}
   - component: {fileID: 2317578964332183675}
   - component: {fileID: 8103994611634825737}
+  - component: {fileID: -1110534568344923800}
   m_Layer: 0
   m_Name: _SmallCoffin
   m_TagString: Untagged
@@ -95,3 +96,16 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.955894, y: 1.1462871, z: 1.4666667}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &-1110534568344923800
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4263023982692770222}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca3791e8ac9be4b41bf2a6b688e60006, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collTag: Player
