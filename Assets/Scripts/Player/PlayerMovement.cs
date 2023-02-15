@@ -81,6 +81,7 @@ public class PlayerMovement : MonoBehaviour
         Vector3 endPos = transform.position + (transform.forward * Distance);
         float elapsedTime = 0;
 
+        StartCoroutine(Sound());
         while (elapsedTime < Speed)
         {
             transform.position = Vector3.Lerp(transform.position, endPos, elapsedTime / Speed);
@@ -100,7 +101,10 @@ public class PlayerMovement : MonoBehaviour
         //on raycast hit
         return Physics.Raycast(transform.position, transform.forward, rayRange, ObstacleLayer);
     }
-
+    /// <summary>
+    /// Plays the AudioSource and wait for it to end
+    /// </summary>
+    /// <returns></returns>
     private IEnumerator Sound()
     {
         source.Play();
