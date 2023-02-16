@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(CharacterMovement), typeof(PlayerAnimatorController), typeof(PlayerAudioManager))]
 public class PlayerStatus : MonoBehaviour
 {
     [Header("OnDeath")]
@@ -10,7 +11,9 @@ public class PlayerStatus : MonoBehaviour
     public float cameraSpeedCentering = 2;
 
 
-    private PlayerMovement _movementPlayer;
+    private CharacterMovement _movementPlayer;
+    private PlayerAnimatorController _anim;
+    private PlayerAudioManager _playerAudio;
     private EnemyGrabOnTrigger _grabTrigger;
 
 
@@ -32,13 +35,13 @@ public class PlayerStatus : MonoBehaviour
             }
         }
 
-
-        _movementPlayer = GetComponent<PlayerMovement>(); // To change with its real movement
-
         if (_enemy.TryGetComponent<EnemyGrabOnTrigger>(out EnemyGrabOnTrigger grab))
         {
             _grabTrigger = grab;
         }
+
+        _movementPlayer = GetComponent<CharacterMovement>();
+        _playerAudio = GetComponent<PlayerAudioManager>();
     }
 
 
@@ -54,11 +57,13 @@ public class PlayerStatus : MonoBehaviour
     public void DeathByAccident()
     {
         Death();
+        _anim.Die();
         _chaserCamera.StartCameraLerp(cameraSpeedCentering, backOffsetAccident);
     }
 
     private void Death()
     {
+        _playerAudio.PlayDeath();
         _menuUI.SetActive(true);
         _resartButton.SetActive(true);
         _movementPlayer.enabled = false;

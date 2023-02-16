@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class PlayerMovement : MonoBehaviour
 {
-
     [Header("Forward movement")]
     [Tooltip("Distance for every forward 'jump' movement")]
     public float Distance = 1;
