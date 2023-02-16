@@ -6,7 +6,7 @@ public class SlotTrigger : MonoBehaviour
 {
     public string triggerTag = Constants.Tags.PLAYER;
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         if (other.CompareTag(triggerTag))
         {
