@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(CharacterMovement), typeof(PlayerAnimatorController), typeof(PlayerAudioManager))]
+[RequireComponent(typeof(PlayerMovement), typeof(PlayerAnimatorController), typeof(PlayerAudioManager))]
 public class PlayerStatus : MonoBehaviour
 {
     [Header("OnDeath")]
@@ -11,7 +11,7 @@ public class PlayerStatus : MonoBehaviour
     public float cameraSpeedCentering = 2;
 
 
-    private CharacterMovement _movementPlayer;
+    private PlayerMovement _movementPlayer;
     private PlayerAnimatorController _anim;
     private PlayerAudioManager _playerAudio;
     private EnemyGrabOnTrigger _grabTrigger;
@@ -40,7 +40,8 @@ public class PlayerStatus : MonoBehaviour
             _grabTrigger = grab;
         }
 
-        _movementPlayer = GetComponent<CharacterMovement>();
+        _anim = GetComponent<PlayerAnimatorController>();
+        _movementPlayer = GetComponent<PlayerMovement>();
         _playerAudio = GetComponent<PlayerAudioManager>();
     }
 
@@ -58,7 +59,7 @@ public class PlayerStatus : MonoBehaviour
     {
         Death();
         _anim.Die();
-        _chaserCamera.StartCameraLerp(cameraSpeedCentering, backOffsetAccident);
+        //_chaserCamera.StartCameraLerp(cameraSpeedCentering, backOffsetAccident);
     }
 
     private void Death()
