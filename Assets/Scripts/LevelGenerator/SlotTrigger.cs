@@ -13,11 +13,18 @@ public class SlotTrigger : MonoBehaviour
     {
         if (other.CompareTag(triggerTag))
         {
+            other.transform.parent = transform.parent;
             StartCoroutine(CenterInSlot(other.transform));
         }   
     }
 
-
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag(triggerTag))
+        {
+            other.transform.parent = null;
+        }
+    }
 
     private IEnumerator CenterInSlot(Transform toThrow)
     {
