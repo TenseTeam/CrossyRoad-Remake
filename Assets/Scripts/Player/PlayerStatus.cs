@@ -22,6 +22,8 @@ public class PlayerStatus : MonoBehaviour
     private GameObject _menuUI;
     private GameObject _resartButton;
 
+    private bool isDead = false;
+
     void Start()
     {
         if(Extension.Methods.Finder.TryFindGameObjectWithTag(Constants.Tags.PLAYER_REFERENCES, out GameObject go))
@@ -48,22 +50,29 @@ public class PlayerStatus : MonoBehaviour
 
     public void DeathByEagle()
     {
-        Death();
-        _chaserCamera.StartCameraLerp(cameraSpeedCentering, backOffsetEagle, _grabTrigger);
-        _enemy.SetActive(true);
-        //Setting the X of the Grabber (The Eagle) equals to the player's one so the grabber fly above him.
-        _enemy.transform.position = new Vector3(transform.position.x, _enemy.transform.position.y, _enemy.transform.position.z);
+        if (!isDead)
+        {
+            Death();
+            _chaserCamera.StartCameraLerp(cameraSpeedCentering, backOffsetEagle, _grabTrigger);
+            _enemy.SetActive(true);
+            //Setting the X of the Grabber (The Eagle) equals to the player's one so the grabber fly above him.
+            _enemy.transform.position = new Vector3(transform.position.x, _enemy.transform.position.y, _enemy.transform.position.z);
+        }
     }
 
     public void DeathByAccident()
     {
-        Death();
-        _anim.Die();
-        _chaserCamera.StartCameraLerp(cameraSpeedCentering, backOffsetAccident);
+        if (!isDead)
+        {
+            Death();
+            _anim.Die();
+            _chaserCamera.StartCameraLerp(cameraSpeedCentering, backOffsetAccident);
+        }
     }
 
     private void Death()
     {
+        isDead = true;
         _playerAudio.PlayDeath();
         _menuUI.SetActive(true);
         _resartButton.SetActive(true);

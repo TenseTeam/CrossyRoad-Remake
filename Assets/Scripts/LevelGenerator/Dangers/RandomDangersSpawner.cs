@@ -11,7 +11,8 @@ public class RandomDangersSpawner : MonoBehaviour
     [Header("Dangers")]
     public GameObject[] dangers;
     [Range(1, 60)]public float forewarningTime = 1f;
-
+    public bool prewarm = false;
+    public float spawnOffsetPrewarm = 10f;
 
     [Header("Series")]
     public IntRange series;
@@ -28,6 +29,8 @@ public class RandomDangersSpawner : MonoBehaviour
     private Transform _spawnPoint;
 
 
+
+
     private void Start()
     {
         _timeForNewSeries = spawnRate.Random();
@@ -35,6 +38,14 @@ public class RandomDangersSpawner : MonoBehaviour
 
         _dangersToSpawn = series.Random();
         _dangerSpeed = speed.Random();
+
+
+        if (prewarm)
+        {
+            Vector3 originPrewarm = new Vector3(_spawnPoint.position.x, _spawnPoint.position.y + spawnOffsetPrewarm, _spawnPoint.position.z);
+            GameObject danger = Instantiate(dangers[Random.Range(0, dangers.Length)], _spawnPoint.position, _spawnPoint.rotation);
+            danger.transform.SetParent(transform);
+        }
 
         StartCoroutine(SpawnLoop());
     }
