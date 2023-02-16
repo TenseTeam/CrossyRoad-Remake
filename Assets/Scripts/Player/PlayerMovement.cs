@@ -37,7 +37,7 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
         
-        if (Input.GetKeyDown(KeyCode.UpArrow))
+        if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.Space))
         {
             StartCoroutine(RotateAndMove(0f, verticalDistance));
         }
