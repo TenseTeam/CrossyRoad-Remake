@@ -19,10 +19,10 @@ public class ChaserCamera : MonoBehaviour
 
     [Header("UI")]
     public GameObject menuUI;
+    public GameObject gameTitle;
 
     private bool started = false;
     private Transform _target;
-
 
     public Transform Target { get => _target; set => _target = value; }
 
@@ -31,6 +31,7 @@ public class ChaserCamera : MonoBehaviour
         if (!started && (Input.GetAxis("Vertical") != 0 || Input.GetAxis("Horizontal") != 0)) 
         {
             menuUI.SetActive(false);
+            gameTitle.SetActive(false);
             StartCoroutine(CameraMovement());
             started = true;
         }
@@ -111,4 +112,7 @@ public class ChaserCamera : MonoBehaviour
             yield return new WaitForFixedUpdate();
         }
     }
+
+
+
 }

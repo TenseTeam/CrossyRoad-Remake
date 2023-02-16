@@ -13,8 +13,6 @@ public class PlayerSpawner : MonoBehaviour
     {
         selectedCharacter = PlayerPrefs.GetInt(Constants.SavePrefs.ID_SELECTED_CHARACTER);
 
-
-
         foreach(SO_Character character in characters)
         {
             if (character.id == selectedCharacter)

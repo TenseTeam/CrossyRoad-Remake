@@ -22,7 +22,7 @@ public class PlayerStatus : MonoBehaviour
     private GameObject _menuUI;
     private GameObject _resartButton;
 
-    private bool isDead = false;
+    public bool IsDead { get; set; } = false;
 
     void Start()
     {
@@ -50,7 +50,7 @@ public class PlayerStatus : MonoBehaviour
 
     public void DeathByEagle()
     {
-        if (!isDead)
+        if (!IsDead)
         {
             Death();
             _chaserCamera.StartCameraLerp(cameraSpeedCentering, backOffsetEagle, _grabTrigger);
@@ -62,7 +62,7 @@ public class PlayerStatus : MonoBehaviour
 
     public void DeathByAccident()
     {
-        if (!isDead)
+        if (!IsDead)
         {
             Death();
             _anim.Die();
@@ -72,7 +72,7 @@ public class PlayerStatus : MonoBehaviour
 
     private void Death()
     {
-        isDead = true;
+        IsDead = true;
         _playerAudio.PlayDeath();
         _menuUI.SetActive(true);
         _resartButton.SetActive(true);
