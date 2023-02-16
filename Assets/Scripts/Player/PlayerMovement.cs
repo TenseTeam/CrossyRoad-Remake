@@ -15,7 +15,6 @@ public class PlayerMovement : MonoBehaviour
     [Header("Speed")]
     public float speed;
 
-    private Rigidbody _rb;
     private PlayerAnimatorController _anim;
     private PlayerAudioManager _playerAudio;
 
@@ -30,7 +29,6 @@ public class PlayerMovement : MonoBehaviour
 
     private void Start()
     {
-        _rb = GetComponent<Rigidbody>();
         _anim = GetComponent<PlayerAnimatorController>();
         _playerAudio = GetComponent<PlayerAudioManager>();
     }

@@ -59,7 +59,7 @@ public class PlayerStatus : MonoBehaviour
     {
         Death();
         _anim.Die();
-        //_chaserCamera.StartCameraLerp(cameraSpeedCentering, backOffsetAccident);
+        _chaserCamera.StartCameraLerp(cameraSpeedCentering, backOffsetAccident);
     }
 
     private void Death()
