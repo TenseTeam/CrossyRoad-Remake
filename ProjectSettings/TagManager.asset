@@ -6,11 +6,12 @@ TagManager:
   tags:
   - CoinsUI
   - PlayerReferences
+  - RestartUI
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Obstacle
   - Water
   - UI
   - 

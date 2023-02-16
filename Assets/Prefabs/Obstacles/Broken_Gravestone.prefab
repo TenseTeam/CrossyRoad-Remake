@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2744032078493223703}
   - component: {fileID: 139670871358668765}
   - component: {fileID: 2091650517079787222}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Broken_Gravestone
   m_TagString: Untagged
   m_Icon: {fileID: 0}

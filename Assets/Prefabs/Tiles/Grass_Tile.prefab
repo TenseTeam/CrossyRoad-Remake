@@ -120,10 +120,10 @@ MonoBehaviour:
   - {fileID: 1941273106255633928, guid: 9082835bc4affbd4d95e3368edb20f0d, type: 3}
   slots: 64646464646419140a140a191e231e646464646464
   spacing: 1.5
-  chance: 5
+  chance: 25
   specialPrefab: {fileID: 3365694606873367111, guid: 9199063c2e29e154680c55330633da65, type: 3}
   quantity:
-    min: 1
+    min: 0
     max: 2
   specialSpawnRange:
     min: 6
