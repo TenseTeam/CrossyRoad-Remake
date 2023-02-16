@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Script used for unlocking new characters.
+/// </summary>
 public class UnlockableCharacters : MonoBehaviour
 {
     [Header("SO Characters")]
@@ -30,10 +33,13 @@ public class UnlockableCharacters : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Check if can Unlock a new character and unlocks it
+    /// </summary>
     public void UnlockNewCharacter()
     {
         if (!isEveryCharacterUnlocked() // Just to making sure it's not going to loop
-            && CoinsManager.instance.Deacrease((int)coinsCost)) 
+            && CoinsManager.instance.Decrease((int)coinsCost)) 
         {
             SO_Character unlockedCharacter;
             
@@ -51,6 +57,10 @@ public class UnlockableCharacters : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Check if every character is already unlocked
+    /// </summary>
+    /// <returns>True if they are all unlocked, False if not.</returns>
     public bool isEveryCharacterUnlocked()
     {
         foreach (SO_Character character in characters)

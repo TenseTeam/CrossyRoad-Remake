@@ -2,19 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+/// <summary>
+/// This script is used for the enemy that grabs the player.
+/// </summary>
 public class EnemyGrabOnTrigger : MonoBehaviour
 {
     public string triggerTag = "";
-    public bool HasGrabbed { get => _hasGrabbed; }
-
-    private bool _hasGrabbed;
+    public bool HasGrabbed { get; set; }
 
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag(triggerTag))
         {
-            _hasGrabbed = true;
+            HasGrabbed = true;
 
             if (other.transform.TryGetComponent<Rigidbody>(out Rigidbody rb))
             {

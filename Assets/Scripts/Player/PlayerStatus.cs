@@ -2,6 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+/// <summary>
+/// Script used for managing the status of the player.
+/// </summary>
 [RequireComponent(typeof(PlayerMovement), typeof(PlayerAnimatorController), typeof(PlayerAudioManager))]
 public class PlayerStatus : MonoBehaviour
 {
@@ -47,8 +51,10 @@ public class PlayerStatus : MonoBehaviour
         _playerAudio = GetComponent<PlayerAudioManager>();
     }
 
-
-    public void DeathByEagle()
+    /// <summary>
+    /// Trigger death by the enemy
+    /// </summary>
+    public void DeathByEnemy()
     {
         if (!IsDead)
         {
@@ -60,6 +66,9 @@ public class PlayerStatus : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Trigger death by an accident
+    /// </summary>
     public void DeathByAccident()
     {
         if (!IsDead)
@@ -70,6 +79,9 @@ public class PlayerStatus : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Basic deth method
+    /// </summary>
     private void Death()
     {
         IsDead = true;

@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Trigger used for generating a chunk
+/// </summary>
 public class NextChunkTrigger : MonoBehaviour
 {
     public string triggerTag = "Player";
@@ -10,8 +13,8 @@ public class NextChunkTrigger : MonoBehaviour
     {
         if (other.CompareTag(triggerTag))
         {
-            Extension.Methods.Finder.DestroyLastComponentOfType<Collider>(gameObject);
             LevelGeneratorLoop.instance.GenerateChunk();
+            this.enabled = false; // disabling the trigger for preventing the player to generate more chunks.
         }
     }
 

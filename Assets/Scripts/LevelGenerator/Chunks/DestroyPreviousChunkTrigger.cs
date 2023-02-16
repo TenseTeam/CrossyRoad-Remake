@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Trigger used for destroying the previous chunk
+/// </summary>
 public class DestroyPreviousChunkTrigger : MonoBehaviour
 {
     public string triggerTag = "Player";
@@ -10,12 +13,8 @@ public class DestroyPreviousChunkTrigger : MonoBehaviour
     {
         if (other.CompareTag(triggerTag))
         {
-            Collider[] colliders = GetComponents<Collider>();
-            Collider lastCollider = colliders[colliders.Length - 1];
-
-            Destroy(lastCollider);
-
             LevelGeneratorLoop.instance.DestroyLastChunk();
+            this.enabled = false;
         }
     }
 }

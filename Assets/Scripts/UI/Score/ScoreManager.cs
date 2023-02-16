@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
+/// <summary>
+/// Singleton Script for managing the score
+/// </summary>
 public class ScoreManager : MonoBehaviour
 {
     public static ScoreManager instance;

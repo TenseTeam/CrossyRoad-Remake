@@ -4,6 +4,9 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
 
+/// <summary>
+/// CoinsManager Singleton used for managing the coins.
+/// </summary>
 public class CoinsManager : MonoBehaviour
 {
     public static CoinsManager instance;
@@ -28,16 +31,18 @@ public class CoinsManager : MonoBehaviour
 
     }
 
-    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode) // So when it changes scene it will find the new text reference.
     {
         if (Extension.Methods.Finder.TryFindGameObjectWithTag(Constants.Tags.UICOINS, out GameObject coinsUI))
         {
             _coinsText = coinsUI.GetComponent<TextMeshProUGUI>();
-
             UpdateUI();
         }
     }
 
+    /// <summary>
+    /// Increase by one the coins
+    /// </summary>
     public void Increase()
     {
         _coins++;
@@ -45,6 +50,10 @@ public class CoinsManager : MonoBehaviour
         UpdateUI();
     }
 
+    /// <summary>
+    /// Increase by X the coins
+    /// </summary>
+    /// <param name="quantityToAdd">X coins to add</param>
     public void Increase(int quantityToAdd)
     {
         quantityToAdd = Mathf.Abs(quantityToAdd);
@@ -54,8 +63,12 @@ public class CoinsManager : MonoBehaviour
         UpdateUI();
     }
 
-
-    public bool Deacrease(int quantityToRemove)
+    /// <summary>
+    /// Decrase X coins
+    /// </summary>
+    /// <param name="quantityToRemove">X coins to remove</param>
+    /// <returns></returns>
+    public bool Decrease(int quantityToRemove)
     {
         quantityToRemove = Mathf.Abs(quantityToRemove);
 
@@ -71,7 +84,9 @@ public class CoinsManager : MonoBehaviour
         return false;
     }
 
-
+    /// <summary>
+    /// Update the UI with the coins.
+    /// </summary>
     private void UpdateUI()
     {
         _coinsText.text = _coins.ToString();

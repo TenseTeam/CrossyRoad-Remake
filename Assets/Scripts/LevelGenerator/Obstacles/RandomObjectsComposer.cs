@@ -4,6 +4,9 @@ using UnityEngine;
 using Extension;
 using Extension.Types;
 
+/// <summary>
+/// Script for generating random objects by "slots" on a gameobject.
+/// </summary>
 public class RandomObjectsComposer : MonoBehaviour
 {
     [Header("Origin")]
@@ -50,6 +53,10 @@ public class RandomObjectsComposer : MonoBehaviour
         GenerateObstacles();
     }
 
+
+    /// <summary>
+    /// Generate the objects.
+    /// </summary>
     void GenerateObstacles()
     {
         int effectiveQuantity = slots.Length;

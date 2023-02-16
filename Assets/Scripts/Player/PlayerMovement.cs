@@ -62,7 +62,12 @@ public class PlayerMovement : MonoBehaviour
 #endif
     }
 
-
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="angle"></param>
+    /// <param name="distance"></param>
+    /// <returns></returns>
     private IEnumerator RotateAndMove(float angle, float distance)
     {
         if (!_isMoving)
@@ -71,12 +76,11 @@ public class PlayerMovement : MonoBehaviour
             _playerAudio.PlayJump();
 
             _anim.Jump();
-            Quaternion rotation = Quaternion.Euler(transform.rotation.x, angle, transform.rotation.z);
 
+            Quaternion rotation = Quaternion.Euler(transform.rotation.x, angle, transform.rotation.z);
             if (transform.rotation != rotation)
             {
-                Debug.Log(transform.rotation != rotation);
-                StartCoroutine(Rotate(rotation));
+                transform.rotation = rotation;
             }
 
             if (!IsObstacled())
@@ -95,15 +99,19 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
-    private IEnumerator Rotate(Quaternion rotation)
-    {
-        for (float elapsedTime = 0f; elapsedTime < speed; elapsedTime += Time.deltaTime)
-        {
-            transform.rotation = Quaternion.Lerp(transform.rotation, rotation, 1 - (elapsedTime / speed));
-            yield return new WaitForEndOfFrame();
-        }
-    }
+    //private IEnumerator Rotate(Quaternion rotation)
+    //{
+    //    for (float elapsedTime = 0f; elapsedTime < speed; elapsedTime += Time.deltaTime)
+    //    {
+    //        transform.rotation = Quaternion.Lerp(transform.rotation, rotation, 1 - (elapsedTime / speed));
+    //        yield return new WaitForEndOfFrame();
+    //    }
+    //}
 
+    /// <summary>
+    /// Raycast checking for obstacle layer.
+    /// </summary>
+    /// <returns>true if a gameobject with the layermask ObstacleLayer</returns>
     private bool IsObstacled()
     {
         //on raycast hit

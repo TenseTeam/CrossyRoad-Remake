@@ -7,6 +7,11 @@ using UnityEngine.SceneManagement;
 using System.Linq;
 using System.Text.RegularExpressions;
 
+
+/// <summary>
+/// Console script with basic functions and possibility
+/// to expand it with custom commands.
+/// </summary>
 public class Console : MonoBehaviour
 {
     public GameObject consolePanel;
@@ -16,7 +21,7 @@ public class Console : MonoBehaviour
     public bool disableCursorOnConsoleClose = false;
     public bool useCustomCommands = false;
 
-    private static readonly List<string> commands = new List<string>
+    private static readonly List<string> commands = new List<string> // All possible default commands
     {
         "close",
         "clear",

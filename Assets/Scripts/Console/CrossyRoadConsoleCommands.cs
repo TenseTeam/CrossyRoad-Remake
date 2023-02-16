@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-
+/// <summary>
+/// Custom commands for crossy road remake.
+/// </summary>
 public class CrossyRoadConsoleCommands : CustomCommands
 {
     private static readonly List<string> commands = new List<string>
@@ -40,7 +42,7 @@ public class CrossyRoadConsoleCommands : CustomCommands
                         {
                             operation = "Removed";
                             
-                            if (!CoinsManager.instance.Deacrease(coinQuantity))
+                            if (!CoinsManager.instance.Decrease(coinQuantity))
                             {
                                 console.Log($"You don't have enough coins to remove from your Coins Storage.");
                                 return;

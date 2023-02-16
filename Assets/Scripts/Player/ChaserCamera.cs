@@ -2,20 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+/// <summary>
+/// ChaserCamera script that follow the player and kill the player
+/// if the player stay out of view.
+/// </summary>
 public class ChaserCamera : MonoBehaviour
 {
     [Header("Target")]
     public string targetTag = Constants.Tags.PLAYER;
-    public float followTargetPositionXOffset = 5;
+    [Tooltip("Camere offset position by the X")]public float followTargetPositionXOffset = 5;
 
     [Header("Speeds")]
     [Range(1, 100)] public float lateralFollowSpeed = 10;
-    [Range(1, 100)] public float chaseSpeed = 10;
-    [Range(1, 100)] public float recoverSpeed = 20;
+    [Tooltip("Default chase speed of the camera")] [Range(1, 100)] public float chaseSpeed = 10;
+    [Tooltip("Speed of the camera that has to recover the distance between the player")] [Range(1, 100)] public float recoverSpeed = 20;
 
     [Header("Distances")]
-    [Range(1, 100)] public float recoverAt = 30;
-    [Range(1, 100)] public float outOfViewAt = 10;
+    [Tooltip("Z max distance that triggers the recover speed")] [Range(1, 100)] public float recoverAt = 30;
+    [Tooltip("Z min distance that triggers the out of view")] [Range(1, 100)] public float outOfViewAt = 10;
 
     [Header("UI")]
     public GameObject menuUI;
@@ -66,17 +71,22 @@ public class ChaserCamera : MonoBehaviour
         
         if(_target.TryGetComponent(out PlayerStatus ps)) 
         {
-            ps.DeathByEagle();
+            ps.DeathByEnemy();
         }
 
         yield return null;
     }
 
+
+    /// <summary>
+    /// SideFollow the target
+    /// </summary>
     private void SideFollow()
     {
         float lerpX = Mathf.Lerp(transform.position.x + followTargetPositionXOffset, _target.position.x, lateralFollowSpeed * Time.fixedDeltaTime);
         transform.position = new Vector3(lerpX, transform.position.y, transform.position.z);
     }
+
 
     public void StartCameraLerp(float speed, float offset, EnemyGrabOnTrigger grabber) 
     {
@@ -84,13 +94,19 @@ public class ChaserCamera : MonoBehaviour
         StartCoroutine(CameraLerp(speed, offset, grabber));
     }
 
+
     public void StartCameraLerp(float speed, float offset)
     {
         StopAllCoroutines();
         StartCoroutine(CameraLerp(speed, offset));
     }
 
-
+    /// <summary>
+    /// Coroutine Camera lerp used to look and lock to a position until the grabber enemy grabbed something.
+    /// </summary>
+    /// <param name="speed">speed</param>
+    /// <param name="offset">Z offset</param>
+    /// <param name="grabber">EnemyGrabOnTrigger reference</param>
     private IEnumerator CameraLerp(float speed, float offset, EnemyGrabOnTrigger grabber)
     {
         while (!grabber.HasGrabbed)
