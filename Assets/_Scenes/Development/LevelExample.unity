@@ -788,8 +788,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   triggerTag: Player
-  drag: 5
-  centerPrecision: 0.2
 --- !u!65 &474424499
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1314,8 +1312,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   triggerTag: Player
-  drag: 5
-  centerPrecision: 0.2
 --- !u!65 &886732644
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1374,8 +1370,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   triggerTag: Player
-  drag: 5
-  centerPrecision: 0.2
 --- !u!65 &945175210
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1434,8 +1428,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   triggerTag: Player
-  drag: 5
-  centerPrecision: 0.2
 --- !u!65 &993181609
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1912,6 +1904,7 @@ MonoBehaviour:
   lateralDistance: 1.5
   speed: 0.2
   rayRange: 1
+  verticalOffsetOrigin: 0.5
   ObstacleLayer:
     serializedVersion: 2
     m_Bits: 8
@@ -2100,8 +2093,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   triggerTag: Player
-  drag: 5
-  centerPrecision: 0.2
 --- !u!65 &1452066340
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2601,8 +2592,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   triggerTag: Player
-  drag: 5
-  centerPrecision: 0.2
 --- !u!65 &1651230482
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2661,8 +2650,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   triggerTag: Player
-  drag: 5
-  centerPrecision: 0.2
 --- !u!65 &1765382198
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2721,8 +2708,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   triggerTag: Player
-  drag: 5
-  centerPrecision: 0.2
 --- !u!65 &1820442639
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2979,8 +2964,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   triggerTag: Player
-  drag: 5
-  centerPrecision: 0.2
 --- !u!65 &2076889046
 BoxCollider:
   m_ObjectHideFlags: 0

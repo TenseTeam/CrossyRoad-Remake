@@ -24,6 +24,7 @@ public class PlayerMovement : MonoBehaviour
     [Header("Raycast (to check obstacles)")]
     [Tooltip("range of the ray to check if there's something ahead of the player")]
     public float rayRange = 1;
+    public float verticalOffsetOrigin = 1f;
     [Tooltip("Layer of the non-killing obstacles")]
     public LayerMask ObstacleLayer;
 
@@ -55,6 +56,10 @@ public class PlayerMovement : MonoBehaviour
         {
             StartCoroutine(RotateAndMove(180f, verticalDistance));
         }
+
+#if DEBUG
+        Debug.DrawRay(new Vector3(transform.position.x, transform.position.y + verticalOffsetOrigin, transform.position.z), transform.forward * rayRange);
+#endif
     }
 
 
@@ -102,6 +107,7 @@ public class PlayerMovement : MonoBehaviour
     private bool IsObstacled()
     {
         //on raycast hit
-        return Physics.Raycast(transform.position, transform.forward, rayRange, ObstacleLayer);
+        Vector3 origin = new Vector3(transform.position.x, transform.position.y + verticalOffsetOrigin, transform.position.z);
+        return Physics.Raycast(origin, transform.forward, rayRange, ObstacleLayer);
     }
 }
