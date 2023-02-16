@@ -15,12 +15,9 @@ public class AudioToggle : MonoBehaviour
     {
         _image = GetComponent<Image>();
 
-        
-
-        IsOff = PlayerPrefs.GetInt(Constants.SavePrefs.AUDIO_ENABLED) == 1 ? false : true;
+        IsOff = PlayerPrefs.GetInt(Constants.SavePrefs.AUDIO_ENABLED, 1) == 1 ? false : true;
         Check();
     }
-
 
     public void Check()
     {

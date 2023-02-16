@@ -31,6 +31,7 @@ public class Console : MonoBehaviour
         "timescale",
         "fps",
         "vsync",
+        "deleteprefs",
         "customcommands",
         "help"
     };
@@ -480,6 +481,30 @@ public class Console : MonoBehaviour
             else
             {
                 Log($"Current vsync {QualitySettings.vSyncCount}");
+            }
+
+            return;
+        }
+
+        if (command.Contains("deleteprefs"))
+        {
+            string[] cmd = command.Split(' ');
+
+            if (cmd.Length > 1)
+            {
+                if (cmd[1] != "?")
+                {
+                    Log($"Use this command to delete all playerprefs.\nSyntax:\n - playerprefs => To clear all playerprefs data.\n");
+                }
+                else
+                {
+                    Log($"Parameter not recognized.");
+                }
+            }
+            else
+            {
+                PlayerPrefs.DeleteAll();
+                Log("All playerprefs data has been deleted.");
             }
 
             return;
