@@ -10,6 +10,7 @@ public class CoinsManager : MonoBehaviour
     private int _coins;
     private TMP_Text _coinsText;
 
+    public int CurrentCoins { get => _coins; }
 
     private void Awake()
     {
@@ -44,19 +45,23 @@ public class CoinsManager : MonoBehaviour
         UpdateUI();
     }
 
-    public void Increase(int quantity)
+    public void Increase(int quantityToAdd)
     {
-        _coins+=quantity;
+        quantityToAdd = Mathf.Abs(quantityToAdd);
+
+        _coins+=quantityToAdd;
         PlayerPrefs.SetInt(Constants.SavePrefs.COINS, _coins);
         UpdateUI();
     }
 
 
-    public bool Deacrease(int quantity)
+    public bool Deacrease(int quantityToRemove)
     {
-        if (_coins - quantity >= 0)
+        quantityToRemove = Mathf.Abs(quantityToRemove);
+
+        if (_coins - quantityToRemove >= 0)
         {
-            _coins -= quantity;
+            _coins -= quantityToRemove;
             PlayerPrefs.SetInt(Constants.SavePrefs.COINS, _coins);
             UpdateUI();
 

@@ -14,6 +14,7 @@ public class Console : MonoBehaviour
     public TMP_InputField cmdInput;
     public KeyCode openConsoleKey;
     public bool disableCursorOnConsoleClose = false;
+    public bool useCustomCommands = false;
 
     private static readonly List<string> commands = new List<string>
     {
@@ -30,6 +31,7 @@ public class Console : MonoBehaviour
         "timescale",
         "fps",
         "vsync",
+        "customcommands",
         "help"
     };
 
@@ -483,16 +485,38 @@ public class Console : MonoBehaviour
             return;
         }
 
+        if (command.Contains("customcommands"))
+        {
+            string[] cmd = command.Split(' ');
+
+            if (cmd.Length > 1 && cmd[1] == "?")
+            {
+                Log("Use this command to see the custom commands for this console.");
+            }
+            else
+            {
+                SendMessage("Commands", command);
+            }
+
+            return;
+        }
+
+        if (useCustomCommands)
+        {
+            SendMessage("Commands", command, SendMessageOptions.DontRequireReceiver);
+        }
+        
         if (command == "")
         {
             Log("");
             return;
         }
 
-        Log("\"" + command + "\"" + " is not recognized as an internal command.");
+        if(!useCustomCommands)
+            Log("\"" + command + "\"" + " is not recognized as an internal command.");
     }
 
-    private void Log(string log)
+    public void Log(string log)
     {
         this.log.text += "\n\n" + log;
     }
