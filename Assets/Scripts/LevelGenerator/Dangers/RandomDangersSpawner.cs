@@ -42,9 +42,8 @@ public class RandomDangersSpawner : MonoBehaviour
 
         if (prewarm)
         {
-            Vector3 originPrewarm = new Vector3(_spawnPoint.position.x, _spawnPoint.position.y + spawnOffsetPrewarm, _spawnPoint.position.z);
-            GameObject danger = Instantiate(dangers[Random.Range(0, dangers.Length)], _spawnPoint.position, _spawnPoint.rotation);
-            danger.transform.SetParent(transform);
+            Vector3 originPrewarm = new Vector3(_spawnPoint.position.x, _spawnPoint.position.y, _spawnPoint.position.z + spawnOffsetPrewarm);
+            SpawnDanger(originPrewarm, _spawnPoint.rotation);
         }
 
         StartCoroutine(SpawnLoop());
@@ -60,15 +59,21 @@ public class RandomDangersSpawner : MonoBehaviour
 
         for (int i = 0; i < _dangersToSpawn; i++)
         {
-            GameObject danger = Instantiate(dangers[Random.Range(0, dangers.Length)], _spawnPoint.position, _spawnPoint.rotation);
-            danger.transform.SetParent(transform);
-            MoveForwardFor mf = danger.AddComponent<MoveForwardFor>();
-            mf.speed = _dangerSpeed;
-            mf.duration = this.duration;
-
+            SpawnDanger(_spawnPoint.position, _spawnPoint.rotation);
             yield return new WaitForSeconds(spacing);
         }
         
         StartCoroutine(SpawnLoop());
+    }
+
+
+
+    private void SpawnDanger(Vector3 position, Quaternion rotation)
+    {
+        GameObject danger = Instantiate(dangers[Random.Range(0, dangers.Length)], position, rotation);
+        danger.transform.SetParent(transform);
+        MoveForwardFor mf = danger.AddComponent<MoveForwardFor>();
+        mf.speed = _dangerSpeed;
+        mf.duration = this.duration;
     }
 }
