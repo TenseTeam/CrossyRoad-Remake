@@ -25,5 +25,6 @@ namespace Constants
         public const string CHARACTERS = "CHARACTERS";
         public const string COINS = "COINS";
         public const string TOPSCORE = "TOPSCORE";
+        public const string AUDIO_ENABLED = "ISAUDIOON";
     }
 }
