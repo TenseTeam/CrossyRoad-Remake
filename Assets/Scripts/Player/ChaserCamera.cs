@@ -80,11 +80,13 @@ public class ChaserCamera : MonoBehaviour
 
     public void StartCameraLerp(float speed, float offset, EnemyGrabOnTrigger grabber) 
     {
+        StopAllCoroutines();
         StartCoroutine(CameraLerp(speed, offset, grabber));
     }
 
     public void StartCameraLerp(float speed, float offset)
     {
+        StopAllCoroutines();
         StartCoroutine(CameraLerp(speed, offset));
     }
 
