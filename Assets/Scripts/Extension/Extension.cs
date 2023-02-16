@@ -131,6 +131,14 @@ namespace Extension
             {
                 return Random.Range(0, possibilities) >= (possibilities - probability);
             }
+
+            public static bool Approximately(float a, float b, float tollerance)
+            {
+                a = Mathf.Max(a, b);
+                b = Mathf.Min(a, b);
+
+                return (a - b < tollerance);
+            }
         }
 
         public static class Audios
