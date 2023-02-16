@@ -14,9 +14,11 @@ public class RandomDangersSpawner : MonoBehaviour
 
     [Header("Dangers")]
     public GameObject[] dangers;
-    [Range(1, 60)]public float forewarningTime = 1f;
-    public bool prewarm = false;
-    public float spawnOffsetPrewarm = 10f;
+
+
+    [Header("Alert")]
+    public bool enableAlert = false;
+    [Tooltip("Alert N seconds before the train arrives")][Range(1, 60)]public float alertWarningTime = 1f;
 
     [Header("Series")]
     public IntRange series;
@@ -41,16 +43,8 @@ public class RandomDangersSpawner : MonoBehaviour
         _dangersToSpawn = series.Random();
         _dangerSpeed = speed.Random();
 
-
-        if (prewarm)
-        {
-            Vector3 originPrewarm = new Vector3(_spawnPoint.position.x, _spawnPoint.position.y, _spawnPoint.position.z + spawnOffsetPrewarm);
-            SpawnDanger(originPrewarm, _spawnPoint.rotation);
-        }
-
         StartCoroutine(SpawnLoop());
     }
-
 
     /// <summary>
     /// Spawn Loop Coroutine to keep instantiating the objects.
@@ -58,17 +52,20 @@ public class RandomDangersSpawner : MonoBehaviour
     /// <returns></returns>
     private IEnumerator SpawnLoop()
     {
-        yield return new WaitForSeconds(forewarningTime);
-        
-        SendMessage("StartAlert", SendMessageOptions.DontRequireReceiver);
+        if (enableAlert)
+        {
+            SendMessage("StartAlert", SendMessageOptions.DontRequireReceiver);
+            yield return new WaitForSeconds(alertWarningTime);
+        }
 
-        yield return new WaitForSeconds(_timeForNewSeries - forewarningTime);
 
         for (int i = 0; i < _dangersToSpawn; i++)
         {
             SpawnDanger(_spawnPoint.position, _spawnPoint.rotation);
             yield return new WaitForSeconds(spacing);
         }
+
+        yield return new WaitForSeconds(_timeForNewSeries);
         
         StartCoroutine(SpawnLoop());
     }
