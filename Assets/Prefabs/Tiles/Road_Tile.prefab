@@ -40,7 +40,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1303689006522283383}
   - component: {fileID: 524873149842827350}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: InvisibleWall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -84,7 +84,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1541778633388692722}
   - component: {fileID: 3361730173865002387}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: InvisibleWall (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

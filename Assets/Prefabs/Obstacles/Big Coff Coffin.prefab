@@ -60,6 +60,64 @@ Transform:
   m_Father: {fileID: 4590729104040403859}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4866003996059716534
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5764405720330587942}
+  - component: {fileID: 128069136531883506}
+  - component: {fileID: 6441307241429540749}
+  m_Layer: 0
+  m_Name: Slot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5764405720330587942
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4866003996059716534}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.1, y: 1.03, z: -0.05}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4590729104040403859}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &128069136531883506
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4866003996059716534}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 4.246189}
+  m_Center: {x: 0, y: 0, z: 0.053588033}
+--- !u!114 &6441307241429540749
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4866003996059716534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68989f3634c30bc49b9c8b7bfad50b8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerTag: Player
 --- !u!1 &6392648196539358348
 GameObject:
   m_ObjectHideFlags: 0
@@ -72,7 +130,6 @@ GameObject:
   - component: {fileID: 7229179635449874835}
   - component: {fileID: 4879584064336215385}
   - component: {fileID: 5671544872826286767}
-  - component: {fileID: 2225268108121241743}
   - component: {fileID: 1321976309976141357}
   m_Layer: 0
   m_Name: _BigCoffin
@@ -157,19 +214,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 4.46335, y: 1.1462871, z: 1.466667}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &2225268108121241743
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6392648196539358348}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca3791e8ac9be4b41bf2a6b688e60006, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  collTag: Player
 --- !u!114 &1321976309976141357
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -220,6 +264,7 @@ Transform:
   - {fileID: 6051974811993065014}
   - {fileID: 1267493676360927766}
   - {fileID: 5688930771513153542}
+  - {fileID: 5764405720330587942}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

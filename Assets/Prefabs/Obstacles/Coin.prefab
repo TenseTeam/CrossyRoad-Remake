@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3870180984264405906}
   - component: {fileID: -5441821291455988489}
   - component: {fileID: 913028164508797061}
+  - component: {fileID: 8626679377995933130}
   m_Layer: 0
   m_Name: Coin
   m_TagString: Untagged
@@ -109,3 +110,23 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.69824034, y: 0.3, z: 0.7333334}
   m_Center: {x: 0, y: 0.15, z: 0}
+--- !u!114 &8626679377995933130
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3365694606873367111}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e060495f66694364b9375b78817ed9fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bumpableTags:
+  - Player
+  audioEffect:
+    clip: {fileID: 8300000, guid: 192f656e0e7e6474c83af7cfe7dd6500, type: 3}
+    volume: 0.4
+    pitch: 1
+    spatialBlend: 0
+    mixerGroup: {fileID: 0}

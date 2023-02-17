@@ -112,7 +112,7 @@ Material:
     - _OutlineSoftness: 0
     - _OutlineUVSpeedX: 0
     - _OutlineUVSpeedY: 0
-    - _OutlineWidth: 0.4
+    - _OutlineWidth: 0.578
     - _PerspectiveFilter: 0.875
     - _Reflectivity: 10
     - _ScaleRatioA: 0.8333333
@@ -162,9 +162,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
   m_Name: Retro
   m_EditorClassIdentifier: 
-  hashCode: 323388577
+  hashCode: 100822270
   material: {fileID: -7410126658074520630}
-  materialHashCode: 1943058401
+  materialHashCode: -484485218
   m_Version: 1.1.0
   m_SourceFontFileGUID: 90ee35a8f8c0c234f98895f12abfc237
   m_SourceFontFile_EditorRef: {fileID: 12800000, guid: 90ee35a8f8c0c234f98895f12abfc237, type: 3}
